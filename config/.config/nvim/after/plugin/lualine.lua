@@ -1,4 +1,21 @@
 local lualine = require('lualine')
+
+local mode_map = {
+   n = "(ᴗ_ ᴗ。)",
+   nt = "(ᴗ_ ᴗ。)",
+   i = "(•̀ - •́ )",
+   R = "( •̯́ ₃ •̯̀)",
+   v = "(⊙ _ ⊙ )",
+   V = "(⊙ _ ⊙ )",
+   no = "Σ(°△°ꪱꪱꪱ)",
+   ["\22"] = "(⊙ _ ⊙ )",
+   t = "(⌐■_■)",
+   ['!'] = "Σ(💩)",
+   c = "(⊙_⊙)⊃━☆ﾟ.*",
+   s = "SUB"
+}
+
+
 lualine.setup({
 	options = {
 		theme = 'catppuccin',
@@ -19,7 +36,12 @@ lualine.setup({
     }
   },
   sections = {
-    lualine_a = {'mode'},
+    lualine_a = {{'mode',
+			            fmt = function()
+               return mode_map[vim.api.nvim_get_mode().mode] or vim.api.nvim_get_mode().mode
+            end
+		}
+		},
     lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_c = {'filename'},
     lualine_x = {'encoding', 'fileformat', 'filetype'},

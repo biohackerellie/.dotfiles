@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
 
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use('nvim-treesitter/nvim-treesitter-textobjects')
   use{
 	  'vimpostor/vim-tpipeline',
 	config = function()
@@ -22,7 +23,7 @@ return require('packer').startup(function(use)
 	end
   }
   use('nvim-treesitter/playground')
-  use('neovim/nvim-lspconfig')
+
   use('m4xshen/autoclose.nvim')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
@@ -32,6 +33,7 @@ return require('packer').startup(function(use)
 		  'nvim-tree/nvim-web-devicons',
 	  },
   }
+  use("JoosepAlviste/nvim-ts-context-commentstring")
 
   use{
 	  'nvim-lualine/lualine.nvim',
@@ -39,36 +41,32 @@ return require('packer').startup(function(use)
   }
 
   use({
-	"L3MON4D3/LuaSnip",
-	-- follow latest release.
-	tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-	-- install jsregexp (optional!:).
-	run = "make install_jsregexp"
-})
-  use({
     "aserowy/tmux.nvim",
     config = function() return require("tmux").setup() end
 })
+
+  use("L3MON4D3/LuaSnip")
+  use("rafamadriz/friendly-snippets")
   use('windwp/nvim-ts-autotag')
   use('github/copilot.vim')
   use('nvimtools/none-ls.nvim')
   use('williamboman/mason.nvim')
   use('hrsh7th/nvim-cmp')
   use('hrsh7th/cmp-buffer')
+  use('hrsh7th/cmp-nvim-lsp')
+  use('hrsh7th/cmp-path')
+  use('hrsh7th/cmp-nvim-lua')
   use('jose-elias-alvarez/null-ls.nvim')
   use('MunifTanjim/prettier.nvim')
-  use('hrsh7th/cmp-nvim-lsp')
+  use("folke/trouble.nvim")
+
+  use('neovim/nvim-lspconfig')
+  use("j-hui/fidget.nvim")
   use('onsails/lspkind.nvim')
   use('nvim-lua/plenary.nvim')
   use('williamboman/mason-lspconfig.nvim')
-  use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'
-  }
+
   use("xiyaowong/nvim-transparent")
-  use {
-  "pmizio/typescript-tools.nvim",
-  requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-  config = function()
-	  require("typescript-tools").setup {}
-	end,
-}
+  
+  use('romgrk/barbar.nvim')
 end)
