@@ -6,4 +6,5 @@ vim.keymap.set('n', '<leader>ps', function()
 
 end)
 
+require('telescope').load_extension 'remote-sshfs'
 

@@ -65,8 +65,11 @@ return require('packer').startup(function(use)
   use('onsails/lspkind.nvim')
   use('nvim-lua/plenary.nvim')
   use('williamboman/mason-lspconfig.nvim')
-
-  use("xiyaowong/nvim-transparent")
+   use("xiyaowong/nvim-transparent")
   
+  use({'nosduco/remote-sshfs.nvim',
+		requires = { 'nvim-telescope/telescope.nvim'}
+	})
   use('romgrk/barbar.nvim')
-end)
+end
+)

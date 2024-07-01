@@ -224,6 +224,11 @@ _G.packer_plugins = {
     path = "/home/ellie/.local/share/nvim/site/pack/packer/start/prettier.nvim",
     url = "https://github.com/MunifTanjim/prettier.nvim"
   },
+  ["remote-sshfs.nvim"] = {
+    loaded = true,
+    path = "/home/ellie/.local/share/nvim/site/pack/packer/start/remote-sshfs.nvim",
+    url = "https://github.com/nosduco/remote-sshfs.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/ellie/.local/share/nvim/site/pack/packer/start/telescope.nvim",

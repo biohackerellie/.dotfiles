@@ -6,6 +6,7 @@ end
 
 local protocol = require("vim.lsp.protocol")
 
+
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -59,7 +60,7 @@ nvim_lsp.tsserver.setup({
 	capabilities = capabilities,
 })
 
-nvim_lsp.lua.setup({
+nvim_lsp.lua_ls.setup({
 	on_attach = on_attach,
 	settings = {
 		Lua = {

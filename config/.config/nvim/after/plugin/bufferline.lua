@@ -23,3 +23,15 @@
 --
 --   }
 -- }
+
+vim.g.barbar_auto_setup = false
+require('barbar').setup {
+	animation = true,
+	auto_hide = 0,
+	clickable = true,
+	hide = {extensions = true},
+	sidebar_filetypes = {
+		NvimTree = true,
+	}
+
+}
