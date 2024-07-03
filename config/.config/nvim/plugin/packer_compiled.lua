@@ -169,6 +169,11 @@ _G.packer_plugins = {
     path = "/home/ellie/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-spectre"] = {
+    loaded = true,
+    path = "/home/ellie/.local/share/nvim/site/pack/packer/start/nvim-spectre",
+    url = "https://github.com/nvim-pack/nvim-spectre"
+  },
   ["nvim-transparent"] = {
     loaded = true,
     path = "/home/ellie/.local/share/nvim/site/pack/packer/start/nvim-transparent",

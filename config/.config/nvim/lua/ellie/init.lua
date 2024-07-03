@@ -11,14 +11,14 @@ require("ellie.packer")
 
 
 
-	-- nvim-tree setup
-	-- desiable netrw
+-- nvim-tree setup
+-- desiable netrw
 vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin =1
+vim.g.loaded_netrwPlugin = 1
 
 -- set number
 vim.opt.number = true
-	-- 24-bit color
+-- 24-bit color
 vim.opt.termguicolors = true
 
 require("nvim-tree").setup({
@@ -42,3 +42,5 @@ require("ellie.lsp")
 
 require("ellie.theme")
 
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2

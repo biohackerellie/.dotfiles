@@ -53,12 +53,27 @@ protocol.CompletionItemKind = {
 
 local capabilities = vim.lsp.protocol.make_client_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
 
-nvim_lsp.tsserver.setup({
-	on_attach = on_attach,
-	cmd = { "typescript-language-server", "--stdio" },
-	capabilities = capabilities,
-})
+
+local lsps = {
+	"tsserver",
+	"jsonls",
+	"html",
+	"cssls",
+	"emmet_ls",
+	"gopls",
+	"marksman",
+	"rust_analyzer",
+}
+
+
+for _, lsp in ipairs(lsps) do
+	nvim_lsp[lsp].setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+	})
+end
 
 nvim_lsp.lua_ls.setup({
 	on_attach = on_attach,
@@ -75,27 +90,6 @@ nvim_lsp.lua_ls.setup({
 	}
 })
 
-nvim_lsp.jsonls.setup({
-	capabilities = capabilities,
-})
-nvim_lsp.tailwindcss.setup({})
-
-nvim_lsp.html.setup({
-	capabilities = capabilities,
-})
-nvim_lsp.cssls.setup({
-	capabilities = capabilities,
-})
-
-nvim_lsp.emmet_ls.setup({})
-
-nvim_lsp.gopls.setup({})
-
-nvim_lsp.marksman.setup({})
-
-nvim_lsp.rust_analyzer.setup({
-	on_attach = on_attach,
-})
 
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
