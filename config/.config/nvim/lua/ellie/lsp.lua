@@ -6,17 +6,15 @@ end
 
 local protocol = require("vim.lsp.protocol")
 
-
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
 
-
 	buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
 	buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { noremap = true, silent = true })
-	buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
+	buf_set_keymap("n", "<A-k>", "<Cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
 	buf_set_keymap("n", "<leader>ca", "<Cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
 	buf_set_keymap("n", "gr", "<Cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
 	buf_set_keymap("n", "<C-j>", "<Cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true, silent = true })
@@ -55,7 +53,6 @@ local capabilities = vim.lsp.protocol.make_client_capabilities(vim.lsp.protocol.
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
 
-
 local lsps = {
 	"tsserver",
 	"jsonls",
@@ -66,7 +63,6 @@ local lsps = {
 	"marksman",
 	"rust_analyzer",
 }
-
 
 for _, lsp in ipairs(lsps) do
 	nvim_lsp[lsp].setup({
@@ -85,15 +81,12 @@ nvim_lsp.lua_ls.setup({
 			workspace = {
 				library = vim.api.nvim_get_runtime_file("", true),
 				checkThirdParty = false,
-			}
-		}
-	}
+			},
+		},
+	},
 })
 
-
-
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-
 
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type

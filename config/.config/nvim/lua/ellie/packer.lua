@@ -73,4 +73,5 @@ return require("packer").startup(function(use)
 		requires = { "nvim-telescope/telescope.nvim" },
 	})
 	use("romgrk/barbar.nvim")
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 end)
