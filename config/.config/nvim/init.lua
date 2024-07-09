@@ -1,6 +1,2 @@
-local namespace = {}
-_G.mo = mo or namespace
-
-require("ellie.config").setup()
-
-
+require("ellie")
+print("hello")
