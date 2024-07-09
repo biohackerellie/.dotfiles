@@ -139,3 +139,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export WARP_ENABLE_WAYLAND=1
+export MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA
+export BROWSER=google-chrome
+
