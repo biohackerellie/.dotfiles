@@ -1,3 +1,8 @@
 **/tmux/plugins/**
 **/tmux/plugins
 **/packer_compiled.lua
+*.tmp
+*.temp
+*.bak
+*.old
+*.backup
