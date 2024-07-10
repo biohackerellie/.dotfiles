@@ -62,14 +62,14 @@ keymap("i", "jj", [[col('.') == 1 ? '<Esc>' : '<Esc>l']], { expr = true })
 
 -- diagnostic
 local diagnostic_goto = function(next, severity)
-  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
-  severity = severity and vim.diagnostic.severity[severity] or nil
-  return function()
-    go({ severity = severity })
-  end
+	local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+	severity = severity and vim.diagnostic.severity[severity] or nil
+	return function()
+		go({ severity = severity })
+	end
 end
 keymap("n", "<leader>cd", function()
-  vim.diagnostic.open_float({ scope = "cursor", force = false })
+	vim.diagnostic.open_float({ scope = "cursor", force = false })
 end, { desc = "Line Diagnostic" })
 keymap("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
 keymap("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
