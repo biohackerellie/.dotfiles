@@ -68,10 +68,6 @@ augroup("TextYankHighlight", {
 		vim.highlight.on_yank()
 	end,
 
-	callback = function()
-		vim.fn.system("clip.exe", vim.fn.getreg('"'))
-	end,
-
 	desc = "Highlight on yank",
 })
 

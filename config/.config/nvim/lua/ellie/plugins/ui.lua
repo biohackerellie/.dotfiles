@@ -89,12 +89,18 @@ local M = {
 		event = { "VeryLazy" },
 		opts = function()
 			local lualine = require("ellie.util").lualine
+			local colors = require("catppuccin.palettes").get_palette()
+			local custom_theme = require("lualine.themes.catppuccin")
+
+			custom_theme.normal.c.bg = colors.surface0
 
 			return {
+
 				options = {
-					theme = "catppuccin",
-					component_separators = { left = "", right = "" },
-					section_separators = { left = "", right = "" },
+					component_separators = "",
+					section_separators = { left = "", right = "" },
+					icons_enabled = true,
+					theme = custom_theme,
 
 					globalstatus = true,
 					ignore_focus = {},
