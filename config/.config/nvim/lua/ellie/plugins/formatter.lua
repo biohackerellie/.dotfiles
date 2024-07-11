@@ -46,21 +46,6 @@ return {
 						end
 						return args
 					end,
-
-					cwd = require("conform.util").root_file({
-						"**/prettier-config/index.js",
-						".prettierrc",
-						".prettierrc.json",
-						".prettierrc.yml",
-						".prettierrc.yaml",
-						".prettierrc.json5",
-						".prettierrc.js",
-						".prettierrc.cjs",
-						".prettierrc.toml",
-						"prettier.config.js",
-						"prettier.config.cjs",
-						"package.json",
-					}),
 				},
 				stylelint = {
 					condition = function(self, ctx)

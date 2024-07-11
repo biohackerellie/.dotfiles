@@ -98,7 +98,7 @@ local M = {
 
 					globalstatus = true,
 					ignore_focus = {},
-					always_divide_middle = true,
+					always_divide_middle = false,
 				},
 
 				sections = {
@@ -110,7 +110,7 @@ local M = {
 					},
 					lualine_x = {
 						lualine.components.copilot,
-						lualine.components.python_env,
+
 						lualine.components.dap,
 						-- lualine.components.lsp,
 						-- lualine.components.treesitter,

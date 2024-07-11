@@ -38,11 +38,11 @@ opt.shortmess:append({ W = true, I = true, c = true, C = true })
 
 -- opt.list = true -- new
 opt.fillchars = {
-  eob = " ",
-  fold = " ",
-  foldsep = " ",
-  foldopen = "",
-  foldclose = "",
+	eob = " ",
+	fold = " ",
+	foldsep = " ",
+	foldopen = "",
+	foldclose = "",
 }
 
 -- fold
@@ -53,6 +53,7 @@ opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 opt.laststatus = 0 -- 3
 opt.showcmd = false
+opt.cmdheight = 0
 opt.showmode = false
 
 opt.clipboard = "unnamedplus"

@@ -45,32 +45,31 @@ M.components = {
 		fmt = function()
 			return mode_map[vim.api.nvim_get_mode().mode] or vim.api.nvim_get_mode().mode
 		end,
+    
 	},
 
 	branch = {
 		"branch",
 		icon = { "", color = { fg = palette.pink, gui = "bold" } },
 		color = { gui = "bold" },
-		separator = {
-			right = "",
-		},
 	},
 
 	filetype = {
 		"filetype",
 		icon_only = true,
+    color = { bg = palette.surface0 },
 	},
 
 	filename = {
 		"filename",
 		file_status = false,
-		color = { fg = palette.lavender },
+		color = { fg = palette.lavender, bg = palette.surface0 },
 	},
 
 	filesize = {
 		"filesize",
 		icon = "󰙴",
-		color = { fg = palette.lavender },
+		color = { fg = palette.lavender, gui = "bold",bg = palette.surface0 },
 		padding = { left = 1, right = 1 },
 		cond = M.conditions.buffer_not_empty and M.conditions.hide_in_width,
 	},
@@ -80,6 +79,7 @@ M.components = {
 		sources = { "nvim_diagnostic" },
 		sections = { "error", "warn", "info", "hint" },
 		symbols = require("ellie.config").icons.diagnostics,
+    color = { bg = palette.surface0 },
 		cond = M.conditions.hide_in_width,
 	},
 
@@ -101,6 +101,7 @@ M.components = {
 			modified = " ",
 			removed = " ",
 		},
+		color = { bg = palette.surface0 },
 		cond = M.conditions.hide_in_width,
 	},
 
@@ -180,7 +181,6 @@ M.components = {
 			return string.format("%d/%d:%d", line, lines, col)
 		end,
 		icon = { "", color = { fg = palette.pink, gui = "bold" } },
-		separator = { left = "" },
 		color = { gui = "bold" },
 	},
 
@@ -237,7 +237,7 @@ M.components = {
 				return
 			end
 			local status = require("copilot.api").status.data
-			return { fg = copilot_colors[status.status] or copilot_colors[""] }
+			return { fg = copilot_colors[status.status] or copilot_colors[""], bg = palette.surface0 }
 		end,
 	},
 }
