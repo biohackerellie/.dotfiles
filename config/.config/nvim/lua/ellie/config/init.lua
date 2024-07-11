@@ -173,7 +173,20 @@ function M.setup()
 	if not lazy_autocmds then
 		M.load("autocmds")
 	end
-
+	if vim.fn.has("wsl") then
+		vim.g.clipboard = {
+			name = "clip.exe (Copy Only)",
+			copy = {
+				["+"] = "clip.exe",
+				["*"] = "clip.exe",
+			},
+			paste = {
+				["+"] = "clip.exe",
+				["*"] = "clip.exe",
+			},
+			cache_enabled = true,
+		}
+	end
 	require("ellie.util").augroup("Mvim", {
 		pattern = "VeryLazy",
 		event = "User",
