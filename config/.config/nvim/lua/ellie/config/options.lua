@@ -53,7 +53,7 @@ opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 opt.laststatus = 0 -- 3
 opt.showcmd = false
-opt.cmdheight = 1
+-- opt.cmdheight = 0
 opt.showmode = false
 
 opt.clipboard = "unnamedplus"

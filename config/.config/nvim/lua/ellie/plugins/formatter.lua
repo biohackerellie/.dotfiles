@@ -37,14 +37,16 @@ return {
 			formatters = {
 				shfmt = { prepend_args = { "-i", "2", "-ci" } },
 				prettier = {
-					args = function(ctx)
-						local args = { "--stdin-filepath", "$FILENAME" }
-						local found =
-							vim.fn.find("**/prettier-config/index.js", { upward = true, path = ctx.dirname })[1]
-						if found then
-							vim.list_extend(args, { "--config", found })
-						end
-						return args
+					condition = function(self, ctx)
+						return vim.fs.find({
+							".prettierrc",
+							".prettierrc.json",
+							".prettierrc.yaml",
+							".prettierrc.yml",
+							".prettierrc.js",
+							"prettier.config.js",
+							"package.json",
+						}, { path = ctx.filename, upward = true })[1]
 					end,
 				},
 				stylelint = {
