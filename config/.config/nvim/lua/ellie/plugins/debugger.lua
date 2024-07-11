@@ -1,17 +1,6 @@
 local M = {
-  "mfussenegger/nvim-dap",
+	"mfussenegger/nvim-dap",
   -- stylua: ignore
-  keys = {
-    { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle breakpoint" },
-    { "<leader>dc", function() require("dap").continue() end, desc = "Continue" },
-    { "<leader>dC", function() require("dap").run_to_cursor() end, desc = "Run to Cursor" },
-    { "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },
-    { "<leader>dr", function() require("dap").restart() end, desc = "Restart" },
-    { "<leader>dp", function() require("dap").pause() end, desc = "Pause" },
-    { "<leader>di", function() require("dap").step_into() end, desc = "Step into" },
-    { "<leader>do", function() require("dap").step_out() end, desc = "Step out" },
-    { "<leader>dO", function() require("dap").step_over() end, desc = "Step over" },
-  },
   dependencies = {
     {
       "rcarriga/nvim-dap-ui",
@@ -76,53 +65,47 @@ local M = {
       opts = { highlight_new_as_changed = true },
     },
   },
-  init = function()
-    vim.fn.sign_define(
-      "DapStopped",
-      { text = "󰋇 ", texthl = "DapStopped", numhl = "DapStopped" }
-    )
-    vim.fn.sign_define(
-      "DapBreakpoint",
-      { text = "󰄛 ", texthl = "DapBreakpoint", numhl = "DapBreakpoint" }
-    )
-  end,
-  config = function()
-    -- load launch.json file
-    require("dap.ext.vscode").load_launchjs(vim.fn.getcwd() .. "/.vscode/launch.json")
+	init = function()
+		vim.fn.sign_define("DapStopped", { text = "󰋇 ", texthl = "DapStopped", numhl = "DapStopped" })
+		vim.fn.sign_define("DapBreakpoint", { text = "󰄛 ", texthl = "DapBreakpoint", numhl = "DapBreakpoint" })
+	end,
+	config = function()
+		-- load launch.json file
+		require("dap.ext.vscode").load_launchjs(vim.fn.getcwd() .. "/.vscode/launch.json")
 
-    local dap = require("dap")
-    -- setup adapter
-    dap.adapters.python = {
-      type = "executable",
-      command = "python",
-      args = { "-m", "debugpy.adapter" },
-      options = {
-        source_filetype = "python",
-      },
-    }
+		local dap = require("dap")
+		-- setup adapter
+		dap.adapters.python = {
+			type = "executable",
+			command = "python",
+			args = { "-m", "debugpy.adapter" },
+			options = {
+				source_filetype = "python",
+			},
+		}
 
-    dap.adapters.go = {
-      type = "server",
-      port = "${port}",
-      executable = {
-        command = "dlv",
-        args = { "dap", "-l", "127.0.0.1:" .. "${port}" },
-      },
-      options = {
-        initialize_timeout_sec = 10,
-      },
-    }
+		dap.adapters.go = {
+			type = "server",
+			port = "${port}",
+			executable = {
+				command = "dlv",
+				args = { "dap", "-l", "127.0.0.1:" .. "${port}" },
+			},
+			options = {
+				initialize_timeout_sec = 10,
+			},
+		}
 
-    -- https://github.com/rcarriga/nvim-dap-ui/issues/248
-    require("ellie.util").augroup("DapReplOptions", {
-      event = "BufWinEnter",
-      pattern = { "\\[dap-repl\\]", "DAP *" },
-      command = vim.schedule_wrap(function(args)
-        local win = vim.fn.bufwinid(args.buf)
-        vim.api.nvim_set_option_value("wrap", true, { win = win })
-      end),
-    })
-  end,
+		-- https://github.com/rcarriga/nvim-dap-ui/issues/248
+		require("ellie.util").augroup("DapReplOptions", {
+			event = "BufWinEnter",
+			pattern = { "\\[dap-repl\\]", "DAP *" },
+			command = vim.schedule_wrap(function(args)
+				local win = vim.fn.bufwinid(args.buf)
+				vim.api.nvim_set_option_value("wrap", true, { win = win })
+			end),
+		})
+	end,
 }
 
 return M
