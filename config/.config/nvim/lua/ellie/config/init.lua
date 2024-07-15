@@ -88,6 +88,9 @@ function M.bootstrap()
 		defaults = { lazy = true },
 		install = { colorscheme = { "catppuccin" } },
 		change_detection = { notify = false },
+		checker = { enabled = true },
+
+		rocks = { enabled = false },
 		ui = {
 			backdrop = M.transparent and 100 or 60,
 			border = M.get_border(),
