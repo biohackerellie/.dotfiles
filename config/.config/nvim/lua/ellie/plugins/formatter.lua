@@ -31,7 +31,6 @@ return {
 				go = { "goimports" },
 				javascript = { "prettier" },
 				typescript = { "prettier" },
-				vue = { "eslint_d", "stylelint" },
 				python = { "ruff_fix", "ruff_format" },
 			},
 			formatters = {
