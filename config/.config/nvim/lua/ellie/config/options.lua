@@ -3,9 +3,23 @@ vim.g.maplocalleader = " "
 
 -- Enable auto format
 vim.g.autoformat = true
-
+vim.opt.clipboard = "unnamedplus"
+vim.api.nvim_set_option("clipboard", "unnamedplus")
 local opt = vim.opt
-
+if vim.fn.has("wsl") == 1 then
+	vim.g.clipboard = {
+		name = "WslClipboard",
+		copy = {
+			["+"] = "clip.exe",
+			["*"] = "clip.exe",
+		},
+		paste = {
+			["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+			["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+		},
+		cache_enabled = 0,
+	}
+end
 opt.confirm = true
 opt.autowrite = true -- new
 

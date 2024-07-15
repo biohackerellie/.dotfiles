@@ -24,7 +24,6 @@ augroup("AutoCursorLine", {
 	end,
 	desc = "Show cursor line only in active window",
 })
-
 augroup("LastPlaceLoc", {
 	event = "BufReadPost",
 	command = function(args)

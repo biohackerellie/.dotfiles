@@ -15,12 +15,4 @@ function M.on_attach(client, buffer)
 	end
 end
 
-function M.refresh()
-	local tsserver = vim.lsp.get_client_by_name("tsserver")
-	local gopls = vim.lsp.get_client_by_name("gopls")
-	if not tsserver or not gopls then
-		return
-	end
-	vim.lsp.codelens.refresh({ bufnr = 0 })
-end
 return M
