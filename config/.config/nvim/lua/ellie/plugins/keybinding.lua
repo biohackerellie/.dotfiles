@@ -4,11 +4,11 @@ local M = {
 	opts = {
 		plugins = {
 			presets = {
-				operators = false,
+				operators = true,
 				motions = true,
 				text_objects = false,
 				windows = false,
-				nav = false,
+				nav = true,
 				z = true,
 				g = false,
 			},
@@ -18,7 +18,7 @@ local M = {
 			separator = " ",
 			group = "",
 		},
-		window = {
+		win = {
 			border = require("ellie.config").get_border(),
 		},
 		layout = {
@@ -30,24 +30,23 @@ local M = {
 	config = function(_, opts)
 		local wk = require("which-key")
 		wk.setup(opts)
-		wk.register({
-			["]"] = { name = "Next" },
-			["["] = { name = "Prev" },
-			["<leader>"] = {
-				b = { name = " Buffer" },
-				c = { name = " Code" },
-				d = { name = " Debug" },
-				f = { name = " Find" },
-				g = { name = " Git" },
-				l = { name = " LSP" },
-				m = { name = " Markdown" },
-				n = { name = "󰵚 Notification" },
-				t = { name = " Test" },
-				o = { name = "󰘵 Option" },
-				p = { name = " Package" },
+		wk.add({
+			{ "]", group = "Next" },
+			{ "[", group = "Prev" },
 
-				M = { name = "Motions" },
-			},
+			{ "<leader>b", name = " Buffer" },
+			{ "<leader>c", group = " Code" },
+			{ "<leader>d", group = " Debug" },
+			{ "<leader>f", group = " Find" },
+			{ "<leader>g", group = " Git" },
+			{ "<leader>l", group = " LSP" },
+			{ "<leader>m", group = " Markdown" },
+			{ "<leader>n", group = "󰵚 Notification" },
+			{ "<leader>t", group = " Test" },
+			{ "<leader>o", group = "󰘵 Option" },
+			{ "<leader>p", group = " Package" },
+
+			{ "<leader>M", group = "Motions" },
 		})
 	end,
 }
