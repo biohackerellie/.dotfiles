@@ -12,6 +12,8 @@ function M.on_attach(client, buffer)
 			command = vim.lsp.codelens.refresh,
 			desc = "Toggle codelens",
 		})
+	else
+		return
 	end
 end
 
