@@ -32,6 +32,7 @@ return {
 				javascript = { "prettier" },
 				typescript = { "prettier" },
 				python = { "ruff_fix", "ruff_format" },
+        rust = {"rustfmt"}
 			},
 			formatters = {
 				shfmt = { prepend_args = { "-i", "2", "-ci" } },
