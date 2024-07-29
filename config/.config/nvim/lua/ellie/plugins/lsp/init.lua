@@ -120,6 +120,7 @@ local M = {
 				--   },
 				-- },
 				tsserver = {},
+				sqls = {},
 			},
 			-- you can do any additional lsp server setup here
 			-- return true if you don't want this server to be setup with lspconfig
@@ -141,7 +142,7 @@ local M = {
 
 			U.on_attach(function(client, buffer)
 				require("ellie.plugins.lsp.keymaps").on_attach(client, buffer)
-				require("ellie.plugins.lsp.codelens").on_attach(client, buffer)
+				-- require("ellie.plugins.lsp.codelens").on_attach(client, buffer)
 				require("ellie.plugins.lsp.highlight").on_attach(client, buffer)
 			end)
 
