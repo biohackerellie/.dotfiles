@@ -125,14 +125,14 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 
-eval "$(zoxide init zsh)"
 export GPG_TTY=$(tty)
 
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local/bin"
 
-
+eval "$(zoxide init zsh )"
+export PATH="$PATH:$HOME/.cargo/env"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -143,3 +143,4 @@ export WARP_ENABLE_WAYLAND=1
 export MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA
 export BROWSER=google-chrome
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
