@@ -5,10 +5,6 @@ local keymap = vim.keymap.set
 keymap("n", "<leader>w", "<Cmd>w<CR>", { desc = "Save file" })
 keymap("n", "<leader>W", "<Cmd>wa<CR>", { desc = "Save files" })
 
--- Editing: quit
-keymap("n", "<leader>q", "<Cmd>q<CR>", { desc = "Quit" })
-keymap("n", "<leader>Q", "<Cmd>q!<CR>", { desc = "Force quit" })
-
 -- Motion
 keymap("n", "<leader>;", "%", { desc = "Jump to match item" })
 
@@ -95,3 +91,16 @@ keymap("n", "<leader>oh", function() Util.toggle.inlay_hints() end, { desc = "To
 keymap("n", "<leader>os", function() Util.toggle("spell") end, { desc = "Toggle spelling" })
 
 keymap("n", "<leader>ow", function() Util.toggle("wrap") end, { desc = "Toggle word wrap" })
+
+-- Sessions
+-- load the session for the current directory
+keymap("n", "<leader>qs", function() require("persistence").load() end, { desc = "Load session" })
+
+-- select a session to load
+keymap("n", "<leader>qS", function() require("persistence").select() end, { desc = "Select session" })
+
+-- load the last session
+keymap("n", "<leader>ql", function() require("persistence").load({ last = true }) end, { desc = "Load last session" })
+
+-- stop Persistence => session won't be saved on exit
+keymap("n", "<leader>qd", function() require("persistence").stop() end, { desc = "Stop Persistence" })

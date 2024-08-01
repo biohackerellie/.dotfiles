@@ -45,7 +45,7 @@ local M = {
 			{ "<leader>t", group = " Test" },
 			{ "<leader>o", group = "󰘵 Option" },
 			{ "<leader>p", group = " Package" },
-
+			{ "<leader>q", group = "🤠 Sessions" },
 			{ "<leader>M", group = "Motions" },
 		})
 	end,
