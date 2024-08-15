@@ -7,6 +7,15 @@ local M = {
 			{ "<leader>mt", "<Cmd>TableModeToggle<CR>", desc = "MarkDown table mode toggle" },
 		},
 	},
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		opts = {},
+		cmd = "RenderMarkdown toggle",
+		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
+		keys = {
+			{ "<leader>md", "<Cmd>RenderMarkdown toggle<CR>", desc = "Render Markdown" },
+		},
+	},
 
 	-- neorg
 	{

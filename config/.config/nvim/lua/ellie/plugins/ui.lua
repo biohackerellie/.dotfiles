@@ -298,6 +298,9 @@ local M = {
 			},
 		},
 	},
+	{
+		"dmmulroy/ts-error-translator.nvim",
+	},
 }
 
 return M

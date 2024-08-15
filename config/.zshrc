@@ -142,5 +142,5 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export WARP_ENABLE_WAYLAND=1
 export MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA
 export BROWSER=google-chrome
-
+alias zed="WAYLAND_DISPLAY='' zed "
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
