@@ -119,7 +119,7 @@ local M = {
 				--     "typescriptreact",
 				--   },
 				-- },
-				tsserver = {},
+        vtsls = {},
 				sqls = {},
 			},
 			-- you can do any additional lsp server setup here
@@ -179,6 +179,17 @@ local M = {
 			mlsp.setup({ ensure_installed = ensure_installed, handlers = { setup_server } })
 		end,
 	},
+    {
+    "yioneko/nvim-vtsls",
+    ft = {
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+    },
+    dependencies = { "nvim-lspconfig" },
+  },
+
 }
 
 return M
