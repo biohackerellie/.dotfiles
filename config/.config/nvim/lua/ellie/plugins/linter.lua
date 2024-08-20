@@ -6,19 +6,16 @@ return {
       events = { "BufWritePost", "BufReadPost", "InsertLeave" },
       linters_by_ft = {
         python = { "ruff" },
-        typescript = { "eslint_d" },
-        javascript = { "eslint_d" },
+        -- typescript = { "eslint_d", "eslint" },
+        -- javascript = { "eslint_d", "eslint" },
+        -- javascriptreact = { "eslint" },
+        -- typescriptreact = {  "eslint" },
+        --        
         vue = { "eslint_d", "stylelint" },
       },
       linters = {
-        eslint_d = {
-          condition = function(ctx)
-            return vim.fs.find(
-              { "eslint.config.js", ".eslintrc.cjs" },
-              { path = ctx.filename, upward = true }
-            )[1]
-          end,
-        },
+       --[[    eslint = {}, ]]
+        
         stylelint = {
           condition = function(ctx)
             return vim.fs.find(
