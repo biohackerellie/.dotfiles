@@ -20,6 +20,11 @@
     "light": "One Light",
     "dark": "Catppuccin Frappé"
   },
+  // "experimental.theme_overrides": {
+  //   "background.appearance": "blurred",
+  //   "background": "#00000060",
+  //   "editor.background": "#00000090"
+  // },
   "autosave": "on_focus_change",
   "indent_guides": {
     "enabled": true,
@@ -31,5 +36,17 @@
   },
   "vim": {
     "toggle_relative_line_numbers": true
+  },
+  "lsp": {
+    "eslint": {
+      "settings": {
+        "rulesCustomizations": [
+          {
+            "rule": "@typescript-eslint/no-unsafe-assignment",
+            "severity": "off"
+          }
+        ]
+      }
+    }
   }
 }
