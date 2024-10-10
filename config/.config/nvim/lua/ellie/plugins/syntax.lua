@@ -47,6 +47,10 @@ local M = {
         node_decremental = "<BS>", -- visual mode
       },
     },
+    autotag = {
+      enable = true,
+      filetypes = {"html", "xml", "jsx", "tsx", "typescript", "javascript", "javascriptreact", "typescriptreact"},
+    },
     textobjects = {
       select = {
         enable = true,

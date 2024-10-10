@@ -15,7 +15,7 @@ blur = true
 
 
 [font.bold]
-family = "Cascadi Mono NF"
+family = "Cascadi Mono"
 style = "Bold"
 
 
@@ -24,11 +24,11 @@ x = 0
 y = 0
 
 [font.italic]
-family = "Cascadia Mono NF"
+family = "Cascadia Mono"
 style = "Italic"
 
 [font.normal]
-family = "Cascadia Mono NF"
+family = "Cascadia Mono"
 style = "Regular"
 
 [font.offset]
