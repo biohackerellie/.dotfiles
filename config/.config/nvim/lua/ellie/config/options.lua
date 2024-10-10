@@ -4,7 +4,9 @@ vim.g.maplocalleader = " "
 -- Enable auto format
 vim.g.autoformat = true
 vim.opt.clipboard = "unnamedplus"
-vim.api.nvim_set_option("clipboard", "unnamedplus")
+-- vim.set_option("clipboard", "unnamedplus")
+
+-- vim.api.nvim_set_option("clipboard", "unnamedplus")
 local opt = vim.opt
 if vim.fn.has("wsl") == 1 then
 	vim.g.clipboard = {
@@ -68,6 +70,7 @@ opt.fillchars = {
 
 -- fold
 opt.foldlevel = 99
+opt.foldlevelstart = 99
 opt.foldcolumn = "auto"
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"

@@ -120,8 +120,8 @@ export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local/bin"
 # Shell integrations
 eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-# eval "$(zoxide init zsh )"
+# eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init zsh )"
 export PATH="$PATH:$HOME/.cargo/env"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -10,24 +10,25 @@ padding.x = 2
 padding.y = 0
 
 
-opacity = 0.7
+# opacity = 10
 blur = true
 
 
 [font.bold]
-family = "Cascadia Code"
+family = "Cascadi Mono NF"
 style = "Bold"
+
 
 [font.glyph_offset]
 x = 0
 y = 0
 
 [font.italic]
-family = "Cascadia Code"
+family = "Cascadia Mono NF"
 style = "Italic"
 
 [font.normal]
-family = "Cascadia Code"
+family = "Cascadia Mono NF"
 style = "Regular"
 
 [font.offset]

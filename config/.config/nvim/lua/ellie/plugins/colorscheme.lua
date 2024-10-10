@@ -7,7 +7,7 @@ local M = {
 		local transparent = require("ellie.config").transparent
 
 		require("catppuccin").setup({
-			flavour = "auto",
+			flavour = "frappe",
 			transparent_background = transparent,
 			styles = {
 				keywords = { "bold" },
