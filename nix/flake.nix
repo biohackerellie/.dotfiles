@@ -28,6 +28,7 @@
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlays.default
+	(self: super: {
          vimPlugins = super.vimPlugins.extend (self': super': {
             nvim-treesitter = super'.nvim-treesitter.overrideAttrs (old: {
               version = "nightly";
@@ -47,10 +48,6 @@
 	permittedInsecurePackages = [ "electron-24.8.6" ];
       };
 
-      nixosPackages = import nixos {
-        system = "x86_64-linux";
-        inherit config overlays;
-      };
 
       x86Pkgs = import nixpkgs {
         system = "x86_64-linux";
@@ -74,14 +71,12 @@
       homeConfigurations = {
         "ellie@pop-os" = home-manager.lib.homeManagerConfiguration {
           pkgs = x86Pkgs;
-	  extraSpecialArgs = {inherit inputs outputs;};
           modules = [
             ./home/home.nix
           ];
         };
       };
 
-
-
+   };
 
 }
