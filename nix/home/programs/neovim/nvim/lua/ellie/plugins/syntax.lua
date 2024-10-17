@@ -1,42 +1,18 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
   main = "nvim-treesitter.configs",
-  build = ":TSUpdate",
+--  build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
-  cmd = { "TSUpdateSync" },
-  init = function(plugin)
-    require("lazy.core.loader").add_to_rtp(plugin)
-    require("nvim-treesitter.query_predicates")
-  end,
+--  cmd = { "TSUpdateSync" },
+  -- init = function(plugin)
+   -- require("lazy.core.loader").add_to_rtp(plugin)
+   -- require("nvim-treesitter.query_predicates")
+-- end,
   dependencies = {
     { "nvim-treesitter/nvim-treesitter-textobjects" },
   },
   opts = {
-    ensure_installed = {
-      "bash",
-      "dockerfile",
-      "dot",
-      "gitignore",
-      "go",
-      "gomod",
-      "gowork",
-      "gosum",
-      "html",
-      "javascript",
-      "json",
-      "lua",
-      "markdown",
-      "python",
-      "ron",
-      "rust",
-      "toml",
-      "tsx",
-      "typescript",
-      "vim",
-      "vue",
-      "yaml",
-    },
-    highlight = { enable = true },
+   highlight = { enable = true },
     indent = { enable = true },
     incremental_selection = {
       enable = true,
@@ -47,10 +23,10 @@ local M = {
         node_decremental = "<BS>", -- visual mode
       },
     },
-    autotag = {
-      enable = true,
-      filetypes = {"html", "xml", "jsx", "tsx", "typescript", "javascript", "javascriptreact", "typescriptreact"},
-    },
+  --  autotag = {
+    --  enable = true,
+     -- filetypes = {"html", "xml", "jsx", "tsx", "typescript", "javascript", "javascriptreact", "typescriptreact"},
+   -- },
     textobjects = {
       select = {
         enable = true,

@@ -91,6 +91,10 @@ function M.bootstrap()
 		checker = { enabled = true },
 
 		rocks = { enabled = false },
+		dev = {
+		    path = "~/.local/share/nvim/nix",
+		    fallback = false
+		}
 		ui = {
 			backdrop = M.transparent and 100 or 60,
 			border = M.get_border(),
