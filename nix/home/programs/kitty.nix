@@ -2,8 +2,8 @@
 
 {
     programs.kitty = {
-	enabled = true;
-    }
+	enable = true;
+    };
     home.file."./.config/kitty/" = { 
 	  source = ./kitty;
 	  recursive = true;

@@ -34,14 +34,14 @@ in
   };
 
   home.sessionVariables = {
-    EDITOR = "nvim"
+    EDITOR = "nvim";
     NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}";
   };
   imports = [
     ./programs/kitty.nix
     ./programs/git.nix
     ./programs/neovim
-  ]
+  ];
   programs.home-manager.enable = true;
   systemd.user.startServices = "sd-switch";
 }

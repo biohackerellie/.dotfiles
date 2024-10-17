@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     tig
-  ]
+  ];
   programs.git = {
     enable = true;
     userName = "biohackerellie";
@@ -12,6 +12,6 @@
 	init = { defaultBranch = "main"; };
 	pull = { rebase = true; };
 	push = { autoSetupRemote = true;};
-    }
-  }
+    };
+  };
 }
