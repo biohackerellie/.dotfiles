@@ -96,6 +96,7 @@ local M = {
 						},
 					},
 				},
+        powershell_es = {},
 				pyright = {},
 				lua_ls = {
 					settings = {
