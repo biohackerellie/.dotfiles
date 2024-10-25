@@ -120,18 +120,6 @@ local M = {
 				--     "typescriptreact",
 				--   },
 				-- },
-        eslint = {
-          settings ={
-            codeAction = {
-            showDocumentation = {
-              enable = true,
-            }
-          },
-            workingDirectory = {
-              mode = "location"
-            }
-          },
-        },
         vtsls = {},
 				sqls = {},
 			},

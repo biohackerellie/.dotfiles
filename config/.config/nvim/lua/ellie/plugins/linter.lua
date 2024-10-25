@@ -11,11 +11,8 @@ return {
         -- javascriptreact = { "eslint" },
         -- typescriptreact = {  "eslint" },
         --        
-        vue = { "eslint_d", "stylelint" },
       },
       linters = {
-       --[[    eslint = {}, ]]
-        
         stylelint = {
           condition = function(ctx)
             return vim.fs.find(

@@ -22,9 +22,9 @@ local M = {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
       config = function()
-        require("ellie.util").on_load("telescope.nvim", function()
+        -- require("ellie.util").on_load("telescope.nvim", function()
           require("telescope").load_extension("fzf")
-        end)
+        -- end)
       end,
     },
   },
