@@ -120,6 +120,7 @@ local M = {
 				--     "typescriptreact",
 				--   },
 				-- },
+        nil_ls = {},
         vtsls = {},
 				sqls = {},
 			},

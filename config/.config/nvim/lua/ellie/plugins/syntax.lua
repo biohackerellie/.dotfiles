@@ -26,6 +26,7 @@ local M = {
       "json",
       "lua",
       "markdown",
+      "nix",
       "powershell",
       "python",
       "ron",
