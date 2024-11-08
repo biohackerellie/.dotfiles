@@ -2,28 +2,34 @@
   description = "Ellie's system flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.05-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew"; 
   };
 
   outputs = { self, nix-darwin, nixpkgs, home-manager, nix-homebrew, ... }@inputs:
   let
-
+    add-unstable-packages = final: _prev: {
+	unstable = import inputs.nixpkgs-unstable {
+	  system = "aarch64-darwin";
+	  };
+	};
     configuration = { pkgs, lib, config, ... }: 
   {
       
-      users.users.ellie = {
-          name = "ellie";
-          home = "/Users/ellie";
-        }
+      users.users.elliekerns = {
+          name = "elliekerns";
+          home = "/Users/elliekerns";
+        };
 
       nixpkgs.config.allowUnfree = true;
-
+      nixpkgs.overlays = [
+	add-unstable-packages
+	];
       # Auto upgrade nix package and the daemon service.
       services.nix-daemon.enable = true;
       # nix.package = pkgs.nix;
@@ -38,8 +44,7 @@
             pkgs.neovim
             pkgs.ripgrep
             pkgs.rustup
-            pkgs.go
-            pkgs.nodejs_22
+            pkgs.unstable.go_1_23
             pkgs.lua-language-server
             pkgs.stylua
             pkgs.mkalias
@@ -72,8 +77,6 @@
 
           };
           onActivation.cleanup = "zap";
-          onActivation.autoUpdate = true;
-          onActivation.autoUpgrade = true;
         };
       system.activationScripts.applications.text = let
         env = pkgs.buildEnv {
@@ -96,7 +99,6 @@
             '';
 
       system.defaults = {
-          dock.autoHide = true;
           finder.FXPreferredViewStyle = "clmv";
           loginwindow.GuestEnabled = false;
           NSGlobalDomain.AppleInterfaceStyle = "Dark";
@@ -130,7 +132,7 @@
             nix-homebrew = {
               enable = true;
               enableRosetta = true;
-              user = "ellie";
+              user = "elliekerns";
             };
           }
           home-manager.darwinModules.home-manager
@@ -138,7 +140,7 @@
             # `home-manager` config
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.ellie = import ./home.nix;
+            home-manager.users.elliekerns = import ./home.nix;
           }
         ];
     };

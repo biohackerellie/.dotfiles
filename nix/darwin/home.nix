@@ -1,20 +1,15 @@
-{ config, pkgs, ...}:
+{ config, pkgs, lib, ...}:
 let
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in
 {
   programs.home-manager.enable = true;
 
-  home.username = "ellie";
-  home.homeDirectory = "/Users/ellie";
+  home.username = "elliekerns";
+  home.homeDirectory = "/Users/elliekerns";
   xdg.enable = true;
-
-  xdg.configFile.nvim.source = mkOutOfStoreSymlink "/Users/ellie/.dotfiles/config/.config/nvim";
-  xdg.configFile.kitty.source = mkOutOfStoreSymlink "/Users/ellie/.dotfiles/config/.config/kitty";
-  programs = {
-    zsh = import ../home/zsh.nix {inherit config pkgs lib;};
-    zoxide = import ../home/zoxide.nix {inherit config pkgs;};
-    fzf = import ../home/fzf.nix {inherit pkgs;};
-  }
+  home.stateVersion = "23.11";
+  xdg.configFile.nvim.source = mkOutOfStoreSymlink "/Users/elliekerns/.dotfiles/config/.config/nvim";
+  xdg.configFile.kitty.source = mkOutOfStoreSymlink "/Users/elliekerns/.dotfiles/config/.config/kitty";
 }
 
