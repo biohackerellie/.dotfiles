@@ -30,6 +30,7 @@ return {
 				sh = { "shfmt" },
 				lua = { "stylua" },
 				go = { "goimports" },
+        gdscript = { "gdformat"},
 				javascript = { "prettier" },
 				typescript = { "prettier" },
         javascriptreact = { "prettier" },

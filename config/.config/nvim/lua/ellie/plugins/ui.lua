@@ -14,8 +14,6 @@ local M = {
 			{ "<leader>bL", "<Cmd>BufferLineCloseRight<CR>", desc = "Close to the right" },
 		},
 		opts = function()
-			local ctp = require("catppuccin.groups.integrations.bufferline")
-			local colors = require("catppuccin.palettes").get_palette()
 			local transparent = require("ellie.config").transparent
 
 			return {
@@ -61,25 +59,6 @@ local M = {
 					show_buffer_close_icons = false,
 					sort_by = "insert_after_current",
 				},
-				highlights = ctp.get({
-					custom = {
-						all = {
-							buffer_selected = { fg = colors.lavender },
-
-							error = { fg = colors.surface1 },
-							error_diagnostic = { fg = colors.surface1 },
-
-							warning = { fg = colors.surface1 },
-							warning_diagnostic = { fg = colors.surface1 },
-
-							info = { fg = colors.surface1 },
-							info_diagnostic = { fg = colors.surface1 },
-
-							hint = { fg = colors.surface1 },
-							hint_diagnostic = { fg = colors.surface1 },
-						},
-					},
-				}),
 			}
 		end,
 	},
@@ -89,10 +68,7 @@ local M = {
 		event = { "VeryLazy" },
 		opts = function()
 			local lualine = require("ellie.util").lualine
-			local colors = require("catppuccin.palettes").get_palette()
-			local custom_theme = require("lualine.themes.catppuccin")
 
-			custom_theme.normal.c.bg = colors.surface0
 
 			return {
 
@@ -100,7 +76,7 @@ local M = {
 					component_separators = "",
 					section_separators = { left = "", right = "" },
 					icons_enabled = true,
-					theme = custom_theme,
+					theme = "tokyonight",
 
 					globalstatus = true,
 					ignore_focus = {},

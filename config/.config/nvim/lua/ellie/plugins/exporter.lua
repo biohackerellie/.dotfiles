@@ -91,7 +91,7 @@ local M = {
 			},
 			window = {
 				position = "left",
-				width = 38,
+				width = 24,
 				mappings = {
 					["l"] = "open",
 					["L"] = "open",

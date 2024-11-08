@@ -16,6 +16,7 @@ local M = {
       "bash",
       "dockerfile",
       "dot",
+      "gdscript",
       "gitignore",
       "go",
       "gomod",

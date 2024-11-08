@@ -57,46 +57,5 @@ function M.common_on_init(client)
   return true
 end
 
----LSP capabilities
----@return table capabilities
-function M.common_capabilities()
-  return vim.tbl_deep_extend(
-    "force",
-    {
-      workspace = {
-        fileOperations = {
-          didRename = true,
-          willRename = true,
-        },
-      },
-    },
-    vim.lsp.protocol.make_client_capabilities(),
-    Util.has("cmp-nvim-lsp") and require("cmp_nvim_lsp").default_capabilities() or {},
-    Util.has("nvim-ufo")
-        and {
-          textDocument = {
-            foldingRange = {
-              dynamicRegistration = false,
-              lineFoldingOnly = true,
-            },
-          },
-        }
-      or {}
-  )
-end
-
----Resolve lsp config
----@param ... table a list lsp config
----@return table config lsp config
-function M.resolve_config(...)
-  local defaults = {
-    on_init = M.common_on_init,
-    capabilities = M.common_capabilities(),
-  }
-
-  defaults = vim.tbl_deep_extend("force", defaults, ...) or {}
-
-  return defaults
-end
 
 return M
