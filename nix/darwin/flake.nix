@@ -11,10 +11,11 @@
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew"; 
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, ... }:
+  outputs = { self, nix-darwin, nixpkgs, home-manager, nix-homebrew, ... }@inputs:
   let
 
-    configuration = { pkgs, config, ... }: {
+    configuration = { pkgs, lib, config, ... }: 
+  {
       
       users.users.ellie = {
           name = "ellie";
@@ -44,6 +45,7 @@
             pkgs.mkalias
             pkgs.gh
             pkgs.zoxide
+            pkgs.sqlc
             pkgs.gum
             pkgs.turbo
             pkgs.lazygit
@@ -63,11 +65,15 @@
           ];
           casks = [
             "hammerspoon"
+            "notion"
+            "discord"
           ];
           masApps = {
 
           };
           onActivation.cleanup = "zap";
+          onActivation.autoUpdate = true;
+          onActivation.autoUpgrade = true;
         };
       system.activationScripts.applications.text = let
         env = pkgs.buildEnv {
@@ -88,6 +94,16 @@
           ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
         done
             '';
+
+      system.defaults = {
+          dock.autoHide = true;
+          finder.FXPreferredViewStyle = "clmv";
+          loginwindow.GuestEnabled = false;
+          NSGlobalDomain.AppleInterfaceStyle = "Dark";
+          NSGlobalDomain.KeyRepeat = 2;
+        }; 
+
+
       # Create /etc/zshrc that loads the nix-darwin environment.
       programs.zsh.enable = true;  # default shell on catalina
       # programs.fish.enable = true;
