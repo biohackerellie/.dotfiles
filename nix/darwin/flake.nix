@@ -68,6 +68,7 @@
           brews = [
             "mas"
             "fzf"
+            "htop"
           ];
           casks = [
             "amethyst"

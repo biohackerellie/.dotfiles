@@ -3,7 +3,7 @@ local M = {}
 
 ---@class MvimOptions
 local defaults = {
-	transparent = false,
+	transparent = true,
   -- stylua: ignore
   icons = {
     diagnostics = {
@@ -61,6 +61,8 @@ local defaults = {
     |  | \   |    |  `---.    `'  '-'  '    \   /    (_|  |     |  |   |  |   
     `--'  `--'    `------'      `-----'      `-'       `--'     `--'   `--'   
   ]],
+	---@class CtpColor
+	palette = {},
 }
 
 function M.bootstrap()
@@ -84,6 +86,7 @@ function M.bootstrap()
 	require("lazy").setup({
 		spec = "ellie.plugins",
 		defaults = { lazy = true },
+		install = { colorscheme = { "catppuccin" } },
 		change_detection = { notify = false },
 		checker = { enabled = true },
 
@@ -188,10 +191,14 @@ function M.setup()
 end
 
 function M.get_border()
-	local border = M.transparent and "rounded" or "rounded"
+	local border = M.transparent and "rounded" or "none"
 	return border
 end
 
+---@param palette CtpColors<string> | CtpColor
+function M.filling_pigments(palette)
+	M.palette = palette
+end
 
 ---@type MvimOptions
 local options

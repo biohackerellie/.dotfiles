@@ -14,6 +14,8 @@ local M = {
 			{ "<leader>bL", "<Cmd>BufferLineCloseRight<CR>", desc = "Close to the right" },
 		},
 		opts = function()
+			local ctp = require("catppuccin.groups.integrations.bufferline")
+			local colors = require("catppuccin.palettes").get_palette()
 			local transparent = require("ellie.config").transparent
 
 			return {
@@ -59,6 +61,21 @@ local M = {
 					show_buffer_close_icons = false,
 					sort_by = "insert_after_current",
 				},
+				highlights = ctp.get({
+					custom = {
+						all = {
+							buffer_selected = { fg = colors.lavender },
+							error = { fg = colors.surface1 },
+							error_diagnostic = { fg = colors.surface1 },
+							warning = { fg = colors.surface1 },
+							warning_diagnostic = { fg = colors.surface1 },
+							info = { fg = colors.surface1 },
+							info_diagnostic = { fg = colors.surface1 },
+							hint = { fg = colors.surface1 },
+							hint_diagnostic = { fg = colors.surface1 },
+						},
+					},
+				}),
 			}
 		end,
 	},
@@ -68,15 +85,17 @@ local M = {
 		event = { "VeryLazy" },
 		opts = function()
 			local lualine = require("ellie.util").lualine
+			local colors = require("catppuccin.palettes").get_palette()
+			local custom_theme = require("lualine.themes.catppuccin")
 
-
+			custom_theme.normal.c.bg = colors.surface0
 			return {
 
 				options = {
 					component_separators = "",
 					section_separators = { left = "", right = "" },
 					icons_enabled = true,
-					theme = "tokyonight",
+					theme = custom_theme,
 
 					globalstatus = true,
 					ignore_focus = {},
@@ -277,24 +296,30 @@ local M = {
 	{
 		"dmmulroy/ts-error-translator.nvim",
 	},
-  {"nvchad/volt", lazy = true},
-  {"nvchad/menu", 
-    lazy = true,
-    keys = {
-      {"<C-t>", function()
-        require("menu").open("default")
-      end, desc = "Context Menu"
-      },
-      {
-        "<RightMouse>", function()
- vim.cmd.exec '"normal! \\<RightMouse>"'
+	{ "nvchad/volt", lazy = true },
+	{
+		"nvchad/menu",
+		lazy = true,
+		keys = {
+			{
+				"<C-t>",
+				function()
+					require("menu").open("default")
+				end,
+				desc = "Context Menu",
+			},
+			{
+				"<RightMouse>",
+				function()
+					vim.cmd.exec('"normal! \\<RightMouse>"')
 
-  local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
-  require("menu").open(options, { mouse = true })
-end , desc = "Context Menu"
-      },
-      }
-    }
+					local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+					require("menu").open(options, { mouse = true })
+				end,
+				desc = "Context Menu",
+			},
+		},
+	},
 }
 
 return M
