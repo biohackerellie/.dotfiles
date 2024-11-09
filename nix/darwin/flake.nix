@@ -50,11 +50,11 @@
             pkgs.mkalias
             pkgs.gh
             pkgs.zoxide
+            pkgs.nodejs_22
             pkgs.sqlc
             pkgs.gum
             pkgs.turbo
             pkgs.lazygit
-            pkgs.kitty
             pkgs.pnpm
             pkgs.obsidian
             pkgs.tailwindcss
@@ -67,9 +67,10 @@
           enable = true;
           brews = [
             "mas"
+            "fzf"
           ];
           casks = [
-            "hammerspoon"
+            "amethyst"
             "notion"
             "discord"
           ];

@@ -11,5 +11,6 @@ in
   home.stateVersion = "23.11";
   xdg.configFile.nvim.source = mkOutOfStoreSymlink "/Users/elliekerns/.dotfiles/config/.config/nvim";
   xdg.configFile.kitty.source = mkOutOfStoreSymlink "/Users/elliekerns/.dotfiles/config/.config/kitty";
+  xdg.configFile.alacritty.source = mkOutOfStoreSymlink "/Users/elliekerns/.dotfiles/config/.config/alacritty";
 }
 

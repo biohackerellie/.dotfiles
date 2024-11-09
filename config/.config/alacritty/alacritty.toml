@@ -1,6 +1,3 @@
-import = [
-  "~/.dotfiles/config/.config/alacritty/themes/themes/catppuccin_frappe.toml"
-]
 
 [env]
 TERM = "xterm-256color"
@@ -15,7 +12,7 @@ blur = true
 
 
 [font.bold]
-family = "Cascadi Mono"
+family = "Cascadia Code PL"
 style = "Bold"
 
 
@@ -24,11 +21,11 @@ x = 0
 y = 0
 
 [font.italic]
-family = "Cascadia Mono"
+family = "Cascadia Code PL"
 style = "Italic"
 
 [font.normal]
-family = "Cascadia Mono"
+family = "Cascadia Code PL"
 style = "Regular"
 
 [font.offset]
@@ -47,3 +44,8 @@ mouse = "Right"
 
 [colors]
 draw_bold_text_with_bright_colors = true
+
+[general]
+import = [
+  "~/.dotfiles/config/.config/alacritty/themes/themes/catppuccin_frappe.toml"
+]
