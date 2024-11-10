@@ -71,9 +71,9 @@
             "htop"
           ];
           casks = [
-            "amethyst"
             "notion"
             "discord"
+            "gimp"
           ];
           masApps = {
 
