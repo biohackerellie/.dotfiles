@@ -15,11 +15,64 @@ local M = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lua",
 			"saadparwaiz1/cmp_luasnip",
 			{
 				"zbirenbaum/copilot-cmp",
 				dependencies = "copilot.lua",
 				opts = {},
+			},
+			{
+				"David-Kunz/cmp-npm",
+				dependencies = { "nvim-lua/plenary.nvim" },
+				ft = "json",
+				config = function()
+					require("cmp_npm").setup({
+						only_latest_version = false,
+					})
+				end,
+			},
+			{
+				"windwp/nvim-autopairs",
+				event = "InsertEnter",
+				opts = {
+					fast_wrap = {},
+				},
+				config = function(_, opts)
+					local autopairs = require("nvim-autopairs")
+					local Rule = require("nvim-autopairs.rule")
+					local cond = require("nvim-autopairs.conds")
+
+					autopairs.setup(opts)
+					local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+					require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+					autopairs.add_rules({
+						Rule("<", ">", "rust"):with_pair(cond.before_regex("%a+")):with_move(function(args)
+							return args.char == ">"
+						end),
+					})
+				end,
+			},
+			{
+				"L3MON4D3/LuaSnip",
+				build = "make install_jsregexp",
+				lazy = true,
+				dependencies = "rafamadriz/friendly-snippets",
+				keys = {
+					{
+						"<C-o>",
+						function()
+							if require("luasnip").choice_active() then
+								require("luasnip").change_choice(1)
+							end
+						end,
+						mode = { "s", "i" },
+						desc = "Select option",
+					},
+				},
+				config = function(_, opts)
+					require("ellie.config.others").luasnip(opts)
+				end,
 			},
 		},
 		config = function()
@@ -50,6 +103,7 @@ local M = {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "path" },
+					{ name = "npm", keyword_length = 4 },
 				}, {
 					{
 						name = "buffer",
@@ -129,55 +183,6 @@ local M = {
 				sources = {
 					{ name = "cmdline" },
 				},
-			})
-		end,
-	},
-
-	{
-		"L3MON4D3/LuaSnip",
-		build = "make install_jsregexp",
-		lazy = true,
-		keys = {
-			{
-				"<C-o>",
-				function()
-					if require("luasnip").choice_active() then
-						require("luasnip").change_choice(1)
-					end
-				end,
-				mode = { "s", "i" },
-				desc = "Select option",
-			},
-		},
-		config = function()
-			require("luasnip").setup({
-				ext_opts = {
-					[require("luasnip.util.types").choiceNode] = {
-						active = {
-							virt_text = {
-								{ "󰠖 ", "Type" },
-							},
-						},
-					},
-				},
-			})
-
-			require("luasnip.loaders.from_vscode").lazy_load({
-				paths = vim.fn.stdpath("config") .. "/snippets",
-			})
-
-			require("ellie.util").augroup("UnlinkSnippetOnModeChange", {
-				event = "ModeChanged",
-				pattern = { "s:n", "i:*" },
-				command = function(args)
-					if
-						require("luasnip").session.current_nodes[args.buf]
-						and not require("luasnip").session.jump_active
-					then
-						require("luasnip").unlink_current()
-					end
-				end,
-				desc = "Forget the current snippet when leaving the insert mode",
 			})
 		end,
 	},

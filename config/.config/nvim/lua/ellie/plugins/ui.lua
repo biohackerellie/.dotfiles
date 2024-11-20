@@ -95,7 +95,7 @@ local M = {
 					component_separators = "",
 					section_separators = { left = "", right = "" },
 					icons_enabled = true,
-					theme = custom_theme,
+					theme = "auto",
 
 					globalstatus = true,
 					ignore_focus = {},

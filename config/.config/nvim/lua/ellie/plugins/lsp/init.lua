@@ -12,8 +12,8 @@ local M = {
 
 			local on_attach = U.on_attach(function(client, buffer)
 				require("ellie.plugins.lsp.keymaps").on_attach(client, buffer)
-				-- require("ellie.plugins.lsp.codelens").on_attach(client, buffer)
-				-- require("ellie.plugins.lsp.highlight").on_attach(client, buffer)
+				require("ellie.plugins.lsp.codelens").on_attach(client, buffer)
+				require("ellie.plugins.lsp.highlight").on_attach(client, buffer)
 			end)
 
 			local lsp_flags = {
