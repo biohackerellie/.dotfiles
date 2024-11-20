@@ -10,6 +10,7 @@ return {
 		"json-lsp",
 		"lua-language-server",
 		"rust-analyzer",
+		"tailwindcss-language-server",
 		"stylua",
 	},
 }
