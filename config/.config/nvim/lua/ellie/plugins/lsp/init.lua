@@ -54,6 +54,7 @@ local M = {
 			})
 			lspconfig.jsonls.setup({})
 			lspconfig.astro.setup({})
+			lspconfig.biome.setup({})
 			lspconfig.tailwindcss.setup({
 				settings = {
 					experimental = {

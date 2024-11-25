@@ -3,6 +3,7 @@ return {
 		"astro-language-server",
 		"gdtoolkit",
 		"gofumpt",
+		"biome",
 		"goimports",
 		"golines",
 		"gopls",

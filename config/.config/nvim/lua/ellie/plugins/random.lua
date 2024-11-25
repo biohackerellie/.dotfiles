@@ -15,6 +15,18 @@ local M = {
       {"<leader>da", function() require("duck").cook_all() end, desc = "Cook all the ducks"},
     },
 	},
+	{
+		"HiPhish/rainbow-delimiters.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"David-Kunz/cmp-npm",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		lazy = false,
+		config = function()
+			require("cmp-npm").setup({})
+		end,
+	},
 }
 
 return M

@@ -23,16 +23,6 @@ local M = {
 				opts = {},
 			},
 			{
-				"David-Kunz/cmp-npm",
-				dependencies = { "nvim-lua/plenary.nvim" },
-				ft = "json",
-				config = function()
-					require("cmp_npm").setup({
-						only_latest_version = false,
-					})
-				end,
-			},
-			{
 				"windwp/nvim-autopairs",
 				event = "InsertEnter",
 				opts = {
@@ -79,7 +69,6 @@ local M = {
 			local cmp, luasnip = require("cmp"), require("luasnip")
 			local select = cmp.SelectBehavior.Select
 			local border = require("ellie.config").get_border()
-
 			cmp.setup({
 				preselect = cmp.PreselectMode.None,
 				experimental = { ghost_text = true },
@@ -186,7 +175,6 @@ local M = {
 			})
 		end,
 	},
-
 	{
 		"lewis6991/hover.nvim",
 		config = function()
