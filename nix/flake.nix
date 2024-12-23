@@ -8,9 +8,6 @@
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Disko
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
     # Home Manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -37,7 +34,7 @@
     zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
-  utputs = {
+  outputs = {
     self,
     nixpkgs,
     disko,
@@ -52,8 +49,10 @@
     inherit (self) outputs;
 
     systems = [
-      "x86_64-linux"
-      
+      "x86_64-linux" 
+    ];
+    hosts = [
+      {name = "elliepc"; hardware = null;}
     ];
     forAllSystems = fn: nixpkgs.lib.genAttrs systems (system: fn {pkgs = import nixpkgs {inherit system;};});
   in {
@@ -75,10 +74,8 @@
           modules =
             [
               # Modules
-              disko.nixosModules.disko
               # System Specific
               ./machines/${host.name}/hardware-configuration.nix
-              ./machines/${host.name}/disko-config.nix
               # General
               ./configuration.nix
               # Home Manager
@@ -86,7 +83,7 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.users.elliott = import ./home/home.nix;
+                home-manager.users.ellie = import ./home/home.nix;
                 home-manager.extraSpecialArgs = {
                   inherit inputs;
                   meta = host;
@@ -102,5 +99,4 @@
       })
       hosts);
   };
-    }
 }
