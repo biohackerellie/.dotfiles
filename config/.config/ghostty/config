@@ -1,0 +1,8 @@
+background = #1B1C27
+foreground = #FFFFFF
+cursor-color = #9FA2D7
+background-opacity = 0.8
+background-blur-radius = 20
+window-decoration = false
+font-size = 16
+font-family = "Cascadia Code PL"
