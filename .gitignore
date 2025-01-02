@@ -9,3 +9,7 @@
 **/lazy-lock.json
 lazy-lock.json
 ./config/.config/nvim/lazy-lock.json
+dolphinrc
+kdeglobals
+xsettingsd
+gtk-3.0
