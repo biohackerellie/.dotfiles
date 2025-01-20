@@ -1,8 +1,8 @@
 * {
-    main-bg:            #1B1C27B3;
-    main-fg:            #CCD0FFE6;
-    main-br:            #5E6495E6;
-    main-ex:            #363D58E6;
-    select-bg:          #AAAEF080;
-    select-fg:          #292B52E6;
+    main-bg:            #<wallbash_pry1>B3;
+    main-fg:            #<wallbash_1xa9>E6;
+    main-br:            #<wallbash_pry3>E6;
+    main-ex:            #<wallbash_pry2>E6;
+    select-bg:          #<wallbash_4xa8>80;
+    select-fg:          #<wallbash_4xa1>E6;
 }
