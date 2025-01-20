@@ -14,3 +14,6 @@ dolphinrc
 kdeglobals
 xsettingsd
 gtk-3.0
+./config/.config/hypr/monitors.conf
+./config/.config/dunst/
+./config/.config/Kvantum/
