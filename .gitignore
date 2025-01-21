@@ -10,10 +10,8 @@
 **/lazy-lock.json
 lazy-lock.json
 ./config/.config/nvim/lazy-lock.json
-dolphinrc
-kdeglobals
-xsettingsd
-gtk-3.0
 ./config/.config/hypr/monitors.conf
 ./config/.config/dunst/
 ./config/.config/Kvantum/
+**/icons/**
+config/.config/hypr/monitors.conf
