@@ -39,6 +39,9 @@ local M = {
 				diagnostics = {
 					refreshSupport = false,
 				},
+				procMacro = {
+					enable = true,
+				},
 			})
 			lspconfig.vtsls.setup({})
 			lspconfig.gopls.setup({
@@ -52,9 +55,13 @@ local M = {
 					},
 				},
 			})
+			lspconfig.svelte.setup({})
 			lspconfig.jsonls.setup({})
 			lspconfig.astro.setup({})
-			lspconfig.biome.setup({})
+			lspconfig.biome.setup({
+				root_dir = U.root_pattern("biome.json", "biome.jsonc"),
+			})
+			lspconfig.zls.setup({})
 			lspconfig.tailwindcss.setup({
 				settings = {
 					experimental = {
