@@ -16,3 +16,4 @@ lazy-lock.json
 **/icons/**
 config/.config/hypr/monitors.conf
 config/.config/hypr/windowrules.conf
+config/.config/nvim/lazy-lock.json

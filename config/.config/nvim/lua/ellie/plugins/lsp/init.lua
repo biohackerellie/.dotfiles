@@ -14,6 +14,22 @@ local M = {
 				require("ellie.plugins.lsp.keymaps").on_attach(client, buffer)
 				require("ellie.plugins.lsp.codelens").on_attach(client, buffer)
 				require("ellie.plugins.lsp.highlight").on_attach(client, buffer)
+				if client.name == "svelte" then
+					vim.api.nvim_create_autocmd("BufWritePost", {
+						pattern = { "*.js", "*.ts", "*.svelte" },
+						callback = function(ctx)
+							client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+						end,
+					})
+				end
+				if vim.bo[buffer].filetype == "svelte" then
+					vim.api.nvim_create_autocmd("BufWritePost", {
+						pattern = { "*.js", "*.ts", "*.svelte" },
+						callback = function(ctx)
+							client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+						end,
+					})
+				end
 			end)
 
 			local lsp_flags = {
@@ -55,7 +71,10 @@ local M = {
 					},
 				},
 			})
-			lspconfig.svelte.setup({})
+			lspconfig.svelte.setup({
+				filetypes = { "svelte" },
+				on_attach = on_attach,
+			})
 			lspconfig.jsonls.setup({})
 			lspconfig.astro.setup({})
 			lspconfig.biome.setup({
