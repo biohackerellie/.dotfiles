@@ -17,3 +17,22 @@ lazy-lock.json
 config/.config/hypr/monitors.conf
 config/.config/hypr/windowrules.conf
 config/.config/nvim/lazy-lock.json
+config/.config/Kvantum/wallbash
+config/.config/dunst
+config/.config/gtk-3.0
+config/.config/Kvantum/wallbash/wallbash.svg
+config/.config/hyde/themes/Catppuccin Mocha
+config/.config/hypr/themes
+config/.config/kitty
+config/.config/menus
+config/.config/nwg-look
+config/.config/qt5ct
+config/.config/qt6ct
+config/.config/rofi
+config/.config/waybar
+config/.config/wlogout
+config/.config/wofi
+config/.config/xsettingsd
+config/.config/baloofilerc
+config/.config/dolphinrc
+config/.gtkrc-2.0
