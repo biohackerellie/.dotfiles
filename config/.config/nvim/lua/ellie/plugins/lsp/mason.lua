@@ -1,6 +1,7 @@
 return {
 	ensure_installed = {
 		"astro-language-server",
+		"cssls",
 		"gdtoolkit",
 		"gofumpt",
 		"biome",

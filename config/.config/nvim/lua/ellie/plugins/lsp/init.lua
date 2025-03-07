@@ -81,6 +81,7 @@ local M = {
 				root_dir = U.root_pattern("biome.json", "biome.jsonc"),
 			})
 			lspconfig.zls.setup({})
+			lspconfig.cssls.setup({})
 			lspconfig.tailwindcss.setup({
 				settings = {
 					experimental = {
