@@ -30,6 +30,20 @@ function M.on_attach(client, buffer)
       vim.keymap.set(m.mode or "n", m[1], m[2], opts)
     end
   end)
+
+-- If the filetype is Rust, override with rustaceanvim keybindings
+  if vim.bo[buffer].filetype == "rust" then
+    local opts = { silent = true, buffer = buffer }
+    vim.keymap.set("n", "<leader>ca",
+      function() vim.cmd.RustLsp('codeAction') end,
+      vim.tbl_extend("force", opts, { desc = "Rust Code Action" })
+    )
+    vim.keymap.set("n", "K",
+      function() vim.cmd.RustLsp({ "hover", "actions" }) end,
+      vim.tbl_extend("force", opts, { desc = "Rust Hover Actions" })
+    )
+  end
 end
+
 
 return M

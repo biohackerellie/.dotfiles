@@ -51,14 +51,14 @@ local M = {
 				flags = lsp_flags,
 				filetypes = { "gd", "gdscript", "gdscript3" },
 			})
-			lspconfig.rust_analyzer.setup({
-				diagnostics = {
-					refreshSupport = false,
-				},
-				procMacro = {
-					enable = true,
-				},
-			})
+			-- lspconfig.rust_analyzer.setup({
+			-- 	diagnostics = {
+			-- 		refreshSupport = false,
+			-- 	},
+			-- 	procMacro = {
+			-- 		enable = true,
+			-- 	},
+			-- })
 			lspconfig.vtsls.setup({})
 			lspconfig.gopls.setup({
 				filetypes = { "go", "gomod", "gowork", "gotmpl" },
