@@ -193,8 +193,6 @@ local M = {
 				},
 				mouse_delay = 500,
 			})
-			vim.keymap.set("n", "<MouseMove>", require("hover").hover_mouse, { desc = "hover.nvim (mouse)" })
-			vim.o.mousemoveevent = true
 		end,
 	},
 	{
