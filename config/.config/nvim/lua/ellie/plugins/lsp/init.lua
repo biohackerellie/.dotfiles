@@ -59,7 +59,12 @@ local M = {
 			-- 		enable = true,
 			-- 	},
 			-- })
-			lspconfig.vtsls.setup({})
+			lspconfig.vtsls.setup({
+				on_attach = on_attach,
+			})
+			lspconfig.vimls.setup({
+				on_attach = on_attach,
+			})
 			lspconfig.gopls.setup({
 				filetypes = { "go", "gomod", "gowork", "gotmpl" },
 				settings = {
@@ -75,24 +80,23 @@ local M = {
 				filetypes = { "svelte" },
 				on_attach = on_attach,
 			})
-			lspconfig.jsonls.setup({})
+			lspconfig.jsonls.setup({
+				on_attach = on_attach,
+			})
 			lspconfig.astro.setup({})
 			lspconfig.biome.setup({
 				root_dir = U.root_pattern("biome.json", "biome.jsonc"),
+				on_attach = on_attach,
 			})
 			lspconfig.zls.setup({})
 			lspconfig.cssls.setup({})
 			lspconfig.tailwindcss.setup({
+				on_attach = on_attach,
+				filetypes = { "tmpl", "astro", "javascript", "typescript", "react", "html" },
 				settings = {
-					experimental = {
-						classRegex = {
-							-- clsx, cn
-							-- https://github.com/tailwindlabs/tailwindcss-intellisense/issues/682#issuecomment-1364585313
-							{ [[clsx\(([^)]*)\)]], [["([^"]*)"]] },
-							{ [[cn\(([^)]*)\)]], [["([^"]*)"]] },
-							-- Tailwind Variants
-							-- https://www.tailwind-variants.org/docs/getting-started#intellisense-setup-optional
-							{ [[tv\(([^)]*)\)]], [==[["'`]([^"'`]*).*?["'`]]==] },
+					tailwindCSS = {
+						includeLanguages = {
+							templ = "html",
 						},
 					},
 				},

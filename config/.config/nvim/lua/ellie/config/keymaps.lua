@@ -80,7 +80,7 @@ keymap("n", "<leader>pl", "<CMD>Lazy<CR>", { desc = "Lazy" })
 
 -- Lazygit
 keymap("n", "<leader>gg", function() Util.terminal({ "lazygit" }) end, { desc = "Lazygit" })
-
+keymap("n", "<leader>gc", function() Util.terminal({ "commitr" }) end, { desc = "Commitr"})
 -- Code format
 keymap("n", "<leader>of", function() Util.format.toggle() end, { desc = "Toggle auto format(global)" })
 keymap("n", "<leader>oF", function() Util.format.toggle(true) end, { desc = "Toggle auto format(buffer)" })
