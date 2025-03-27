@@ -39,14 +39,14 @@ local options = {
 			if icons[item.kind] then
 				item.kind = icons[item.kind] .. item.kind
 			end
-			if entry.source.name ~= "copilot" then
-				local widths = { abbr = 27, menu = 35 }
-				for key, value in pairs(widths) do
-					if item[key] and vim.fn.strchars(item[key]) > value then
-						item[key] = vim.fn.strcharpart(item[key], 0, value - 3) .. "..."
-					end
-				end
-			end
+			-- if entry.source.name ~= "copilot" then
+			-- 	local widths = { abbr = 27, menu = 35 }
+			-- 	for key, value in pairs(widths) do
+			-- 		if item[key] and vim.fn.strchars(item[key]) > value then
+			-- 			item[key] = vim.fn.strcharpart(item[key], 0, value - 3) .. "..."
+			-- 		end
+			-- 	end
+			-- end
 			return item
 		end,
 	},
@@ -65,10 +65,10 @@ local options = {
 			select = true,
 		}),
 		["<Tab>"] = cmp.mapping(function(fallback)
-			local copilot = require("copilot.suggesion")
-			if copilot.is_visible() then
-				copilot.accept()
-			elseif cmp.visible() then
+			-- local copilot = require("copilot.suggesion")
+			-- if copilot.is_visible() then
+			-- 	copilot.accept()
+			if cmp.visible() then
 				cmp.select_next_item()
 			elseif require("luasnip").expand_or_jumpable() then
 				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
@@ -99,7 +99,7 @@ local options = {
 		{ name = "nvim_lua" },
 		{ name = "path" },
 		{ name = "crates" },
-		{ name = "copilot" },
+		-- { name = "copilot" },
 	},
 }
 
@@ -114,7 +114,7 @@ return {
 		{ name = "path" },
 		{ name = "luasnip" },
 		{ name = "nvim_lua" },
-		{ name = "copilot" },
+		-- { name = "copilot" },
 	},
 	snippet = {
 		expand = function(args)

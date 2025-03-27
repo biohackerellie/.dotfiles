@@ -27,6 +27,19 @@ local M = {
 			require("cmp-npm").setup({})
 		end,
 	},
+	-- {
+	-- 	"biohackerellie/commitr.nvim",
+	-- 	lazy = true,
+	-- 	cmd = {
+	-- 		"Commitr",
+	-- 	},
+	-- 	keys = {
+	-- 		{ "<leader>gc", "<cmd>Commitr<cr>", desc = "Commitr" },
+	-- 	},
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 	},
+	-- },
 }
 
 return M

@@ -110,7 +110,7 @@ local M = {
 						lualine.components.diagnostics,
 					},
 					lualine_x = {
-						lualine.components.copilot,
+						-- lualine.components.copilot,
 
 						lualine.components.dap,
 						-- lualine.components.lsp,
