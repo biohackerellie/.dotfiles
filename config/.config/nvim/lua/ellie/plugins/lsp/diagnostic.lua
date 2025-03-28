@@ -22,6 +22,7 @@ function M.setup()
 			spacing = 2,
 			prefix = "●",
 		},
+		virtual_lines = { current_line = true },
 		float = {
 			header = "",
 			source = false,

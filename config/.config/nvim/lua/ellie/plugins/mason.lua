@@ -1,19 +1,27 @@
+local ensure_installed = {
+  "zls",
+  "cssmodules-language-server",
+  "html-lsp",
+  "gopls",
+  "css-lsp",
+  "tailwindcss-language-server",
+  "emmet-ls",
+  "stylua",
+  "biome",
+  "marksman",
+  "typescript-language-server",
+  "lua-language-server",
+}
+--- @type LazySpec
 return {
-  {
-    "williamboman/mason.nvim",
-    cmd = { "Mason", "MasonInstall", "MasonUpdate" },
-    config = function(_, opts)
-      require('mason').setup(opts)
-    end
-  },
-  {
+  "williamboman/mason.nvim",
+  dependencies = {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    opts = require "ellie.plugins.lsp.mason",
-    dependencies = { "williamboman/mason.nvim" },
-    cmd = {
-      "MasonToolsInstall", "MasonToolsInstallSync",
-      "MasonToolsUpdate", "MasonToolsUpdateSync",
-      "MasonToolsClean",
-    }
-  }
+  },
+  config = function()
+    require("mason").setup()
+    require("mason-tool-installer").setup({
+      ensure_installed = ensure_installed
+    })
+  end,
 }

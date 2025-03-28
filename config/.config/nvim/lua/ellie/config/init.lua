@@ -182,8 +182,6 @@ function M.setup()
 				M.load("autocmds")
 			end
 			M.load("keymaps")
-
-			require("ellie.util").format.setup()
 		end,
 	})
 end
