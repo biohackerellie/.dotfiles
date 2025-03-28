@@ -127,10 +127,10 @@ local M = {
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() and has_words_before() then
 							cmp.select_next_item({ behavior = select })
-						elseif vim.snippet.active({ direction = 1 }) then
-							vim.schedule(function()
-								vim.snippet.jump(1)
-							end)
+						-- elseif vim.snippet.active({ direction = 1 }) then
+						--   vim.schedule(function()
+						--     vim.snippet.jump(1)
+						--   end)
 						elseif luasnip.locally_jumpable(1) then
 							luasnip.jump(1)
 						else
@@ -140,10 +140,10 @@ local M = {
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item({ behavior = select })
-						elseif vim.snippet.active({ direction = -1 }) then
-							vim.schedule(function()
-								vim.snippet.jump(-1)
-							end)
+						-- elseif vim.snippet.active({ direction = -1 }) then
+						--   vim.schedule(function()
+						--     vim.snippet.jump(-1)
+						--   end)
 						elseif luasnip.locally_jumpable(-1) then
 							luasnip.jump(-1)
 						else

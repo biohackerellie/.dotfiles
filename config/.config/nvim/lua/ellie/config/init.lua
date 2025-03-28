@@ -78,7 +78,7 @@ function M.bootstrap()
 			lazypath,
 		})
 		if vim.api.nvim_get_vvar("shell_error") ~= 0 then
-			vim.api.nvim_err_writeln("Error cloning lazy.nvim repository...\n\n" .. output)
+			vim.api.nvim_echo({ { "Error cloning lazy.nvim repository..." }, { output } }, true, {})
 		end
 	end
 	vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
