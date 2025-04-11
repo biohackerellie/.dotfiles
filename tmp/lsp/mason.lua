@@ -14,6 +14,5 @@ return {
 		"rust-analyzer",
 		"tailwindcss-language-server",
 		"stylua",
-		"tmpl",
 	},
 }

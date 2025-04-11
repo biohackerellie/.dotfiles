@@ -26,6 +26,7 @@ end
 vim.filetype.add({
 	extension = {
 		mdx = "markdown",
+		templ = "templ",
 	},
 })
 
@@ -102,7 +103,6 @@ opt.updatetime = 200 -- 500
 
 -- undo
 opt.undofile = true
-
 
 -- add binaries installed by mason to path
 local is_windows = vim.loop.os_uname().sysname == "Windows_NT"

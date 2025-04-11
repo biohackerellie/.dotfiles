@@ -39,6 +39,7 @@ local M = {
 			"vim",
 			"vue",
 			"yaml",
+			"templ",
 			"zig",
 		},
 		highlight = { enable = true },
