@@ -139,3 +139,8 @@ alias ls='ls --color'
 alias codecfg="cp -R $HOME/.dotfiles/.vscode ."
 alias upg='sudo -iu postgres psql'
 if [ -e /home/ellie/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ellie/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/ellie/.lmstudio/bin"
+# End of LM Studio CLI section
+
