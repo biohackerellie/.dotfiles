@@ -17,11 +17,11 @@ local M = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lua",
 			"saadparwaiz1/cmp_luasnip",
-			-- {
-			-- 	"zbirenbaum/copilot-cmp",
-			-- 	dependencies = "copilot.lua",
-			-- 	opts = {},
-			-- },
+			{
+				"zbirenbaum/copilot-cmp",
+				dependencies = "copilot.lua",
+				opts = {},
+			},
 			{
 				"windwp/nvim-autopairs",
 				event = "InsertEnter",
@@ -88,7 +88,7 @@ local M = {
 					end,
 				},
 				sources = cmp.config.sources({
-					-- { name = "copilot" },
+					{ name = "copilot" },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "path" },
@@ -112,14 +112,14 @@ local M = {
 						if icons[item.kind] then
 							item.kind = icons[item.kind] .. item.kind
 						end
-						-- if entry.source.name ~= "copilot" then
-						-- 	local widths = { abbr = 27, menu = 35 }
-						-- 	for key, value in pairs(widths) do
-						-- 		if item[key] and vim.fn.strchars(item[key]) > value then
-						-- 			item[key] = vim.fn.strcharpart(item[key], 0, value - 3) .. "..."
-						-- 		end
-						-- 	end
-						-- end
+						if entry.source.name ~= "copilot" then
+							local widths = { abbr = 27, menu = 35 }
+							for key, value in pairs(widths) do
+								if item[key] and vim.fn.strchars(item[key]) > value then
+									item[key] = vim.fn.strcharpart(item[key], 0, value - 3) .. "..."
+								end
+							end
+						end
 						return item
 					end,
 				},
@@ -195,18 +195,18 @@ local M = {
 			})
 		end,
 	},
-	-- {
-	-- 	"zbirenbaum/copilot.lua",
-	-- 	cmd = "Copilot",
-	-- 	build = ":Copilot auth",
-	-- 	opts = {
-	-- 		suggestion = { enabled = false },
-	-- 		panel = { enabled = false },
-	-- 		filetypes = {
-	-- 			markdown = true,
-	-- 		},
-	-- 	},
-	-- },
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		build = ":Copilot auth",
+		opts = {
+			suggestion = { enabled = false },
+			panel = { enabled = false },
+			filetypes = {
+				markdown = true,
+			},
+		},
+	},
 }
 
 return M

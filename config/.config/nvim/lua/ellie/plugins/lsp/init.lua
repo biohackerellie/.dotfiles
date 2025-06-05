@@ -35,6 +35,10 @@ local M = {
 			local lsp_flags = {
 				debounce_text_changes = 150,
 			}
+			-- require("typescript-tools").setup({
+			-- 	on_attach = on_attach,
+			-- })
+
 			-- servers
 			lspconfig.lua_ls.setup({
 				settings = {
@@ -93,8 +97,10 @@ local M = {
 				root_dir = U.root_pattern("biome.json", "biome.jsonc"),
 				on_attach = on_attach,
 			})
+
 			lspconfig.zls.setup({})
 			lspconfig.cssls.setup({})
+
 			lspconfig.tailwindcss.setup({
 				on_attach = on_attach,
 				filetypes = {
@@ -187,6 +193,11 @@ local M = {
 			})
 		end,
 	},
+	-- {
+	-- 	"pmizio/typescript-tools.nvim",
+	-- 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	-- 	opts = {},
+	-- },
 	{
 		"yioneko/nvim-vtsls",
 		ft = {
