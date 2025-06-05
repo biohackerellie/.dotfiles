@@ -15,5 +15,6 @@ return {
 		"tailwindcss-language-server",
 		"stylua",
 		"tmpl",
+		"vtsls",
 	},
 }
