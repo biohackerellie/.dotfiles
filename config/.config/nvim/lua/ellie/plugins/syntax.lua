@@ -17,6 +17,8 @@ local M = {
 			"dockerfile",
 			"dot",
 			"gdscript",
+			"godot_resource",
+			"gdshader",
 			"gitignore",
 			"go",
 			"gomod",
@@ -42,8 +44,13 @@ local M = {
 			"templ",
 			"zig",
 		},
+
 		highlight = { enable = true },
-		indent = { enable = true },
+		indent = {
+			disable = {
+				"gdscript",
+			},
+		},
 		incremental_selection = {
 			enable = true,
 			keymaps = {

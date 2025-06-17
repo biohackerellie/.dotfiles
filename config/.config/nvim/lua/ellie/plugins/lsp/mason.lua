@@ -5,6 +5,7 @@ return {
 		"gdtoolkit",
 		"gofumpt",
 		"biome",
+		"gdscript",
 		"goimports",
 		"golines",
 		"gopls",
