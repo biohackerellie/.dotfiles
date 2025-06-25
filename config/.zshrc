@@ -144,4 +144,5 @@ export BROWSER=google-chrome
 alias ls='ls --color'
 alias codecfg="cp -R $HOME/.dotfiles/.vscode ."
 alias upg='sudo -iu postgres psql'
+alias nvimgd='nvim --listen /tmp/godot.pipe'
 if [ -e /home/ellie/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ellie/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
