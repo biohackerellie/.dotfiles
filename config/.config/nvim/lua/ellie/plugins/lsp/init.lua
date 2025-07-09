@@ -57,14 +57,14 @@ local M = {
 				cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
 				filetypes = { "gd", "gdscript", "gdscript3" },
 			})
-			-- lspconfig.rust_analyzer.setup({
-			-- 	diagnostics = {
-			-- 		refreshSupport = false,
-			-- 	},
-			-- 	procMacro = {
-			-- 		enable = true,
-			-- 	},
-			-- })
+			lspconfig.rust_analyzer.setup({
+				diagnostics = {
+					refreshSupport = false,
+				},
+				procMacro = {
+					enable = true,
+				},
+			})
 			lspconfig.vtsls.setup({
 				on_attach = on_attach,
 			})
