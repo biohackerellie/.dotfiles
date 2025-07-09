@@ -138,7 +138,7 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 export WARP_ENABLE_WAYLAND=1
 export MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA
 export BROWSER=google-chrome
-
+export GOFLAGS="-tags=postgres"
 
 # Aliases
 alias ls='ls --color'

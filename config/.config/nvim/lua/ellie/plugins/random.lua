@@ -20,6 +20,14 @@ local M = {
 		event = "VeryLazy",
 	},
 	{
+		"folke/zen-mode.nvim",
+		cmd = "ZenMode",
+		keys = {
+			{ "<leader>zm", "<cmd>ZenMode<cr>", desc = "ZenMode" },
+		},
+		opts = {},
+	},
+	{
 		"MagicDuck/grug-far.nvim",
 	},
 	-- {

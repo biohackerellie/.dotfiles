@@ -76,7 +76,16 @@ local M = {
 				settings = {
 					env = {
 						GOEXPERIMENT = "rangefunc",
+						GOFLAGS = "-tags=postgres",
 					},
+					on_attach = on_attach,
+					capabilities = capabilities,
+					init_options = {
+						buildFlags = { "-tags=postgres" },
+					},
+					usePlaceholders = false,
+					["local"] = "<repo>",
+					buildFlags = { "-tags=postgres" },
 					formatting = {
 						gofumpt = true,
 					},
