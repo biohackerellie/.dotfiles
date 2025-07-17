@@ -1,7 +1,7 @@
 background = #1B1C27
 foreground = #FFFFFF
 cursor-color = #9FA2D7
-background-opacity = 0.8
+background-opacity = 0.5
 background-blur-radius = 20
 confirm-close-surface = false
 window-decoration = false
@@ -18,3 +18,7 @@ font-feature = cv16
 font-feature = cv31 
 font-feature = cv25 
 font-feature = cv26 
+keybind = super+r=reload_config
+
+window-save-state = always
+
