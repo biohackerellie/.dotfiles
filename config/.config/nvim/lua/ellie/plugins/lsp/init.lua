@@ -81,11 +81,11 @@ local M = {
 					on_attach = on_attach,
 					capabilities = capabilities,
 					init_options = {
-						buildFlags = { "-tags=postgres" },
+						buildFlags = { "-tags=sqlite" },
 					},
 					usePlaceholders = false,
 					["local"] = "<repo>",
-					buildFlags = { "-tags=postgres" },
+					buildFlags = { "-tags=sqlite" },
 					formatting = {
 						gofumpt = true,
 					},
