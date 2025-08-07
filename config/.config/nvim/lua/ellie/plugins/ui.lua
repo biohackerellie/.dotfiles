@@ -14,8 +14,9 @@ local M = {
 			{ "<leader>bL", "<Cmd>BufferLineCloseRight<CR>", desc = "Close to the right" },
 		},
 		opts = function()
-			local ctp = require("catppuccin.groups.integrations.bufferline")
-			local colors = require("catppuccin.palettes").get_palette()
+			-- local ctp = require("catppuccin.groups.integrations.bufferline")
+			local tkn = require("tokyonight.groups.bufferline")
+			local colors = require("tokyonight.colors").setup()
 			local transparent = require("ellie.config").transparent
 
 			return {
@@ -61,21 +62,21 @@ local M = {
 					show_buffer_close_icons = false,
 					sort_by = "insert_after_current",
 				},
-				highlights = ctp.get({
-					custom = {
-						all = {
-							buffer_selected = { fg = colors.lavender },
-							error = { fg = colors.surface1 },
-							error_diagnostic = { fg = colors.surface1 },
-							warning = { fg = colors.surface1 },
-							warning_diagnostic = { fg = colors.surface1 },
-							info = { fg = colors.surface1 },
-							info_diagnostic = { fg = colors.surface1 },
-							hint = { fg = colors.surface1 },
-							hint_diagnostic = { fg = colors.surface1 },
-						},
-					},
-				}),
+				-- highlights = tkn.get(colors,{
+				-- 	custom = {
+				-- 		all = {
+				-- 			buffer_selected = { fg = colors.lavender },
+				-- 			error = { fg = colors.surface1 },
+				-- 			error_diagnostic = { fg = colors.surface1 },
+				-- 			warning = { fg = colors.surface1 },
+				-- 			warning_diagnostic = { fg = colors.surface1 },
+				-- 			info = { fg = colors.surface1 },
+				-- 			info_diagnostic = { fg = colors.surface1 },
+				-- 			hint = { fg = colors.surface1 },
+				-- 			hint_diagnostic = { fg = colors.surface1 },
+				-- 		},
+				-- 	},
+				-- }),
 			}
 		end,
 	},
@@ -85,10 +86,10 @@ local M = {
 		event = { "VeryLazy" },
 		opts = function()
 			local lualine = require("ellie.util").lualine
-			local colors = require("catppuccin.palettes").get_palette()
-			local custom_theme = require("lualine.themes.catppuccin")
+			local colors = require("tokyonight.colors").setup()
+			local custom_theme = require("lualine.themes.tokyonight-moon")
 
-			custom_theme.normal.c.bg = colors.surface0
+			custom_theme.normal.c.bg = colors.bg
 			return {
 
 				options = {
@@ -113,11 +114,11 @@ local M = {
 						-- lualine.components.copilot,
 
 						lualine.components.dap,
-						-- lualine.components.lsp,
-						-- lualine.components.treesitter,
+						lualine.components.lsp,
+						lualine.components.treesitter,
 						lualine.components.filetype,
 						lualine.components.filesize,
-						-- lualine.components.lazy,
+						lualine.components.lazy,
 					},
 					lualine_y = { lualine.components.location },
 					lualine_z = { lualine.components.clock },

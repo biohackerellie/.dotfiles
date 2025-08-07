@@ -2,7 +2,7 @@
 local M = {}
 
 local fn, api = vim.fn, vim.api
-local palette = require("ellie.config").palette
+local palette = require("tokyonight.colors").setup()
 
 local mode_map = {
 	n = "(ᴗ _ ᴗ)",
@@ -19,11 +19,11 @@ local mode_map = {
 	s = "SUB",
 }
 local copilot_colors = {
-	[""] = palette.lavender,
-	["Normal"] = palette.lavender,
+	[""] = palette.purple,
+	["Normal"] = palette.blue6,
 	["Error"] = palette.red,
 	["Warning"] = palette.yellow,
-	["InProgress"] = palette.peach,
+	["InProgress"] = palette.cyan,
 }
 
 M.conditions = {
@@ -49,26 +49,26 @@ M.components = {
 
 	branch = {
 		"branch",
-		icon = { "", color = { fg = palette.pink, gui = "bold" } },
+		icon = { "", color = { fg = palette.magenta2, gui = "bold" } },
 		color = { gui = "bold" },
 	},
 
 	filetype = {
 		"filetype",
 		icon_only = true,
-		color = { bg = palette.surface0 },
+		color = { bg = palette.bg_float },
 	},
 
 	filename = {
 		"filename",
 		file_status = false,
-		color = { fg = palette.lavender, bg = palette.surface0 },
+		color = { fg = palette.fg_float, bg = palette.bg_statusline },
 	},
 
 	filesize = {
 		"filesize",
 		icon = "󰙴",
-		color = { fg = palette.lavender, gui = "bold", bg = palette.surface0 },
+		color = { fg = palette.fg_float, gui = "bold", bg = palette.bg_float },
 		padding = { left = 1, right = 1 },
 		cond = M.conditions.buffer_not_empty and M.conditions.hide_in_width,
 	},
@@ -78,7 +78,7 @@ M.components = {
 		sources = { "nvim_diagnostic" },
 		sections = { "error", "warn", "info", "hint" },
 		symbols = require("ellie.config").icons.diagnostics,
-		color = { bg = palette.surface0 },
+		color = { bg = palette.bg_statusline },
 		cond = M.conditions.hide_in_width,
 	},
 
@@ -100,7 +100,7 @@ M.components = {
 			modified = " ",
 			removed = " ",
 		},
-		color = { bg = palette.surface0 },
+		color = { bg = palette.bg_statusline },
 		cond = M.conditions.hide_in_width,
 	},
 
@@ -135,7 +135,7 @@ M.components = {
 		--   return { icon, color = { fg = color } }
 		-- end,
 		icon = { "󰌠", color = { fg = "#ffbc03" } },
-		color = { fg = palette.lavender },
+		color = { fg = palette.bg_statusline },
 		cond = M.conditions.hide_in_width,
 	},
 
@@ -150,7 +150,7 @@ M.components = {
 			return string.format("LSP(s):[%s]", table.concat(clients, " • "))
 		end,
 		icon = "",
-		color = { fg = palette.mauve },
+		color = { bg = palette.bg_statusline },
 		cond = M.conditions.hide_in_width and M.conditions.has_lsp_clients,
 	},
 
@@ -167,7 +167,7 @@ M.components = {
 
 	lazy = {
 		require("lazy.status").updates,
-		color = { fg = palette.subtext0 },
+		color = { fg = palette.fg_float },
 		cond = require("lazy.status").has_updates,
 	},
 
@@ -179,7 +179,7 @@ M.components = {
 			-- return string.format("%3d/%d:%-2d", line, lines, col)
 			return string.format("%d/%d:%d", line, lines, col)
 		end,
-		icon = { "", color = { fg = palette.pink, gui = "bold" } },
+		icon = { "", color = { fg = palette.magenta2, gui = "bold" } },
 		color = { gui = "bold" },
 	},
 
@@ -192,7 +192,7 @@ M.components = {
 			local index = math.ceil(line_ratio * #chars)
 			return chars[index]
 		end,
-		color = { fg = palette.surface0 },
+		color = { fg = palette.fg_float },
 	},
 
 	spaces = {
@@ -208,7 +208,7 @@ M.components = {
 		end,
 		padding = { left = 1, right = 1 },
 		cond = M.conditions.hide_in_width,
-		color = { fg = palette.sapphire },
+		color = { fg = palette.cyan },
 	},
 
 	clock = {

@@ -138,12 +138,13 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 export WARP_ENABLE_WAYLAND=1
 export MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA
 export BROWSER=google-chrome
-export GOFLAGS="-tags=postgres"
+export GOFLAGS="-tags=sqlite"
 
 # Aliases
 alias ls='ls --color'
 alias codecfg="cp -R $HOME/.dotfiles/.vscode ."
 alias upg='sudo -iu postgres psql'
 alias tmux='tmux -f $HOME/.dotfiles/config/.config/tmux/tmux.conf'
+alias wallpaper='~/.config/hyprland-de/scripts/wallpaper.sh'
 
 if [ -e /home/ellie/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ellie/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

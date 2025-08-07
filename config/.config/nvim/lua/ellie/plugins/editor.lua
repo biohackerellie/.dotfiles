@@ -98,7 +98,7 @@ local M = {
       { "]T", function() require("todo-comments").jump_next() end, desc = "Next TODO comment" },
     },
 		opts = function()
-			local palette = require("ellie.config").palette
+			local palette = require("tokyonight.colors").setup()
 			return {
 				keywords = {
 					FIX = { icon = "", color = "fix", alt = { "FIXME", "FIXIT", "ISSUE" } },
@@ -117,11 +117,11 @@ local M = {
 				colors = {
 					fix = { palette.red },
 					todo = { palette.green },
-					hack = { palette.peach },
+					hack = { palette.hint },
 					warn = { palette.yellow },
-					perf = { palette.mauve },
+					perf = { palette.yellow },
 					note = { palette.blue },
-					test = { palette.sky },
+					test = { palette.green },
 				},
 			}
 		end,

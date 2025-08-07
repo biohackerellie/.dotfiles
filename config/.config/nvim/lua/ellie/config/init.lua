@@ -61,7 +61,8 @@ local defaults = {
     |  | \   |    |  `---.    `'  '-'  '    \   /    (_|  |     |  |   |  |   
     `--'  `--'    `------'      `-----'      `-'       `--'     `--'   `--'   
   ]],
-	---@class CtpColor
+
+	---@class ColorScheme
 	palette = {},
 }
 
@@ -86,7 +87,7 @@ function M.bootstrap()
 	require("lazy").setup({
 		spec = "ellie.plugins",
 		defaults = { lazy = true },
-		install = { colorscheme = { "catppuccin" } },
+		install = { colorscheme = { "tokyonight" } },
 		change_detection = { notify = false },
 		checker = { enabled = true },
 		ui = {
@@ -187,11 +188,11 @@ function M.setup()
 end
 
 function M.get_border()
-	local border = M.transparent and "rounded" or "none"
+	local border = "rounded"
 	return border
 end
 
----@param palette CtpColors<string> | CtpColor
+---@param palette ColorScheme<string> | ColorScheme
 function M.filling_pigments(palette)
 	M.palette = palette
 end
