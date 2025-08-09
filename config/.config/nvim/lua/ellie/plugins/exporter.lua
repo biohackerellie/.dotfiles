@@ -25,7 +25,7 @@ local M = {
 		return {
 			source_selector = {
 				winbar = true,
-				separator = "",
+				separator = "|",
 				content_layout = "center",
 				truncation_character = "",
 				sources = {
@@ -92,6 +92,7 @@ local M = {
 			window = {
 				position = "left",
 				width = 24,
+
 				mappings = {
 					["l"] = "open",
 					["L"] = "open",

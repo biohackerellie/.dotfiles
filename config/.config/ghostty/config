@@ -1,7 +1,4 @@
-background = #1B1C27
-foreground = #FFFFFF
-cursor-color = #9FA2D7
-background-opacity = 0.5
+background-opacity = 0.7
 background-blur-radius = 20
 confirm-close-surface = false
 window-decoration = true
@@ -20,5 +17,7 @@ font-feature = cv25
 font-feature = cv26 
 keybind = super+r=reload_config
 
+custom-shader = shaders/cursor_smear.glsl
+theme = catppuccin-macchiato
 window-save-state = always
 
