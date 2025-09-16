@@ -2,45 +2,26 @@ local M = {
 	{
 		"neovim/nvim-lspconfig",
 		lazy = false,
-		config = function(_, opts)
+		config = function()
 			local lspconfig = require("lspconfig")
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-			local U = require("ellie.util").lsp
 			require("ellie.plugins.lsp.diagnostic").setup()
 			require("lspconfig.ui.windows").default_options.border = require("ellie.config").get_border()
 
-			local on_attach = U.on_attach(function(client, buffer)
-				require("ellie.plugins.lsp.keymaps").on_attach(client, buffer)
-				require("ellie.plugins.lsp.codelens").on_attach(client, buffer)
-				require("ellie.plugins.lsp.highlight").on_attach(client, buffer)
-				if client.name == "svelte" then
-					vim.api.nvim_create_autocmd("BufWritePost", {
-						pattern = { "*.js", "*.ts", "*.svelte" },
-						callback = function(ctx)
-							client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
-						end,
-					})
-				end
-				if vim.bo[buffer].filetype == "svelte" then
-					vim.api.nvim_create_autocmd("BufWritePost", {
-						pattern = { "*.js", "*.ts", "*.svelte" },
-						callback = function(ctx)
-							client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
-						end,
-					})
-				end
-			end)
+			local on_attach = function(_client, _buffer)
+				-- require("ellie.plugins.lsp.keymaps").on_attach(buffer)
+				-- require("ellie.plugins.lsp.codelens").on_attach(client, buffer)
+				-- require("ellie.plugins.lsp.highlight").on_attach(client, buffer)
+			end
 
-			local lsp_flags = {
-				debounce_text_changes = 150,
-			}
 			-- require("typescript-tools").setup({
 			-- 	on_attach = on_attach,
 			-- })
 
 			-- servers
 			lspconfig.lua_ls.setup({
+				on_attach = on_attach,
 				settings = {
 					Lua = {
 						diagnostics = {
@@ -65,9 +46,7 @@ local M = {
 					enable = true,
 				},
 			})
-			lspconfig.vtsls.setup({
-				on_attach = on_attach,
-			})
+			lspconfig.vtsls.setup({})
 			lspconfig.vimls.setup({
 				on_attach = on_attach,
 			})
@@ -78,14 +57,6 @@ local M = {
 						GOEXPERIMENT = "rangefunc",
 						GOFLAGS = "-tags=postgres",
 					},
-					on_attach = on_attach,
-					capabilities = capabilities,
-					init_options = {
-						buildFlags = { "-tags=sqlite" },
-					},
-					usePlaceholders = false,
-					["local"] = "<repo>",
-					buildFlags = { "-tags=sqlite" },
 					formatting = {
 						gofumpt = true,
 					},
@@ -103,7 +74,6 @@ local M = {
 			})
 			lspconfig.astro.setup({})
 			lspconfig.biome.setup({
-				root_dir = U.root_pattern("biome.json", "biome.jsonc"),
 				on_attach = on_attach,
 			})
 

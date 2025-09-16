@@ -5,6 +5,10 @@ vim.g.maplocalleader = " "
 vim.g.autoformat = true
 vim.opt.clipboard = "unnamedplus"
 -- vim.set_option("clipboard", "unnamedplus")
+--
+-- add binaries installed by mason.nvim to path
+local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
 
 -- vim.api.nvim_set_option("clipboard", "unnamedplus")
 local opt = vim.opt

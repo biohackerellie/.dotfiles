@@ -4,8 +4,6 @@ local M = {}
 
 function M.setup()
 	local icons = require("ellie.config").icons.diagnostics
-	local tsTranslator = require("ts-error-translator")
-	tsTranslator.setup()
 
 	vim.diagnostic.config({
 		signs = {

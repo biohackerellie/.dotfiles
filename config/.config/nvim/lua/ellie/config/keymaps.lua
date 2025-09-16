@@ -83,17 +83,26 @@ keymap("n", "<leader>pl", "<CMD>Lazy<CR>", { desc = "Lazy" })
 
 -- stylua: ignore start
 
+keymap("n", "gd", "<CMD>Telescope lsp_definitions<CR>", {desc = "Goto Definition"})
+keymap("n","gD", vim.lsp.buf.declaration, {desc = "Goto Declaration"})
+keymap("n", "gr", "<CMD>Telescope lsp_references<CR>",{desc = "References"})
+keymap("n", "gi", "<CMD>Telescope lsp_implementations<CR>", {desc = "Goto Implementation" })
+keymap("n", "gt", "<CMD>Telescope lsp_type_definitions<CR>", {desc = "Goto Type Definition"})
+keymap("n", "K", require("hover").open, {desc = "Hover" })
+keymap("n", "gK", require("hover").select, {desc = "hover.nvim (select)" })
+keymap("i", "<C-k>", vim.lsp.buf.signature_help, {desc = "Signature Help"})
+keymap("n", "<leader>cr", vim.lsp.buf.rename, {desc = "Rename"})
+keymap({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, {desc = "Code action"})
+keymap("n", "<MouseMove>", require("hover").mouse, {desc = "hover.nvim (mouse)" })
 -- Lazygit
 keymap("n", "<leader>gg", function() Util.terminal({ "lazygit" }) end, { desc = "Lazygit" })
 keymap("n", "<leader>gc", function() Util.terminal({ "commitr" }) end, { desc = "Commitr"})
 -- Code format
-keymap("n", "<leader>of", function() Util.format.toggle() end, { desc = "Toggle auto format(global)" })
-keymap("n", "<leader>oF", function() Util.format.toggle(true) end, { desc = "Toggle auto format(buffer)" })
-keymap({ "n", "v" }, "<leader>cf", function() Util.format.format({ force = true }) end, { desc = "Code format" })
+-- keymap("n", "<leader>of", function() Util.format.toggle() end, { desc = "Toggle auto format(global)" })
+-- keymap("n", "<leader>oF", function() Util.format.toggle(true) end, { desc = "Toggle auto format(buffer)" })
+-- keymap({ "n", "v" }, "<leader>cf", function() Util.format.format({ force = true }) end, { desc = "Code format" })
 
 
-keymap("n", "<leader>oh", function() Util.toggle.inlay_hints() end, { desc = "Toggle Inlay Hints" })
-keymap("n", "<leader>os", function() Util.toggle("spell") end, { desc = "Toggle spelling" })
 
 keymap("n", "<leader>ow", function() Util.toggle("wrap") end, { desc = "Toggle word wrap" })
 
