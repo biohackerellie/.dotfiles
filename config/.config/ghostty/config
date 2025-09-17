@@ -17,8 +17,8 @@ font-feature = cv26
 keybind = super+r=reload_config
 
 
-custom-shader = ./shaders/cursor_blaze.glsl
 custom-shader = ./shaders/smoke-and-ghost.glsl
+custom-shader = ./shaders/cursor_blaze.glsl
 theme = catppuccin-macchiato
 window-save-state = always
 

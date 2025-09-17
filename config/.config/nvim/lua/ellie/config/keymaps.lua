@@ -58,21 +58,21 @@ keymap("i", "jj", [[col('.') == 1 ? '<Esc>' : '<Esc>l']], { expr = true })
 
 -- diagnostic
 local diagnostic_goto = function(next, severity)
-	local go = next and vim.diagnostic.jump({ count = 1, float = true })
-		or vim.diagnostic.jump({ count = -1, float = true })
-	severity = severity and vim.diagnostic.severity[severity] or nil
-	return function()
-		go({ severity = severity })
-	end
+  local go = next and vim.diagnostic.jump({ count = 1, float = true })
+      or vim.diagnostic.jump({ count = -1, float = true })
+  severity = severity and vim.diagnostic.severity[severity] or nil
+  return function()
+    go({ severity = severity })
+  end
 end
 keymap("n", "<leader>cd", function()
-	vim.diagnostic.open_float({ scope = "cursor", force = false })
+  vim.diagnostic.open_float({ scope = "cursor", force = false })
 end, { desc = "Line Diagnostic" })
 keymap("n", "]d", function()
-	vim.diagnostic.jump({ count = 1, float = true })
+  vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "Next Diagnostic" })
 keymap("n", "[d", function()
-	vim.diagnostic.jump({ count = -1, float = true })
+  vim.diagnostic.jump({ count = -1, float = true })
 end, { desc = "Prev Diagnostic" })
 keymap("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
 keymap("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
@@ -83,20 +83,21 @@ keymap("n", "<leader>pl", "<CMD>Lazy<CR>", { desc = "Lazy" })
 
 -- stylua: ignore start
 
-keymap("n", "gd", "<CMD>Telescope lsp_definitions<CR>", {desc = "Goto Definition"})
-keymap("n","gD", vim.lsp.buf.declaration, {desc = "Goto Declaration"})
-keymap("n", "gr", "<CMD>Telescope lsp_references<CR>",{desc = "References"})
-keymap("n", "gi", "<CMD>Telescope lsp_implementations<CR>", {desc = "Goto Implementation" })
-keymap("n", "gt", "<CMD>Telescope lsp_type_definitions<CR>", {desc = "Goto Type Definition"})
-keymap("n", "K", require("hover").open, {desc = "Hover" })
-keymap("n", "gK", require("hover").select, {desc = "hover.nvim (select)" })
-keymap("i", "<C-k>", vim.lsp.buf.signature_help, {desc = "Signature Help"})
-keymap("n", "<leader>cr", vim.lsp.buf.rename, {desc = "Rename"})
-keymap({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, {desc = "Code action"})
-keymap("n", "<MouseMove>", require("hover").mouse, {desc = "hover.nvim (mouse)" })
+
+keymap("n", "gd", "<CMD>Telescope lsp_definitions<CR>", { desc = "Goto Definition" })
+keymap("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
+keymap("n", "gr", "<CMD>Telescope lsp_references<CR>", { desc = "References" })
+keymap("n", "gi", "<CMD>Telescope lsp_implementations<CR>", { desc = "Goto Implementation" })
+keymap("n", "gt", "<CMD>Telescope lsp_type_definitions<CR>", { desc = "Goto Type Definition" })
+keymap("n", "K", require("ellie.config.hover").hover_or_fallback, { desc = "Hover" })
+keymap("n", "gK", require("hover").select, { desc = "hover.nvim (select)" })
+keymap("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
+keymap("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
+keymap({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
+keymap("n", "<MouseMove>", require("hover").mouse, { desc = "hover.nvim (mouse)" })
 -- Lazygit
 keymap("n", "<leader>gg", function() Util.terminal({ "lazygit" }) end, { desc = "Lazygit" })
-keymap("n", "<leader>gc", function() Util.terminal({ "commitr" }) end, { desc = "Commitr"})
+keymap("n", "<leader>gc", function() Util.terminal({ "commitr" }) end, { desc = "Commitr" })
 -- Code format
 -- keymap("n", "<leader>of", function() Util.format.toggle() end, { desc = "Toggle auto format(global)" })
 -- keymap("n", "<leader>oF", function() Util.format.toggle(true) end, { desc = "Toggle auto format(buffer)" })
