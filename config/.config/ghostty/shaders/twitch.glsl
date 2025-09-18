@@ -97,9 +97,9 @@ float offsetFunction(float iTime) {
 	return amount * periods[3];
 }
 
-const float DIM_CUTOFF = 0.35;
-const float BRIGHT_CUTOFF = 0.65;
-const float ABBERATION_FACTOR = 0.05;
+const float DIM_CUTOFF = 0.6;
+const float BRIGHT_CUTOFF = 0.8;
+const float ABBERATION_FACTOR = 0.03;
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec2 uv = fragCoord.xy / iResolution.xy;

@@ -4,7 +4,7 @@ local function has_hover_provider()
   local bufnr = vim.api.nvim_get_current_buf()
   local clients = vim.lsp.get_clients({ bufnr }) or {}
   for _, client in ipairs(clients) do
-    local caps = client.server_capabilities or client.resolved_capabilities or {}
+    local caps = client.server_capabilities or client.dynamic_capabilities or {}
     if caps and (caps.hoverProvider == true) then
       return true
     end
@@ -14,12 +14,10 @@ end
 
 local function hover_with_window()
   local border = require("ellie.config").get_border()
-  local width = math.floor(vim.o.columns * 0.8)
-  local height = math.floor(vim.o.lines * 0.3)
   vim.lsp.buf.hover({
     border = border,
-    max_width = width,
-    max_height = height,
+    max_width = 120,
+    max_height = 30,
     title = 'LSP Hover',
     title_pos = "center"
   })

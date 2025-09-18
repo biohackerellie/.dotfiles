@@ -1,4 +1,4 @@
-background-opacity = 0.8
+background-opacity = 0.9
 confirm-close-surface = false
 window-decoration = true
 font-size = 16
@@ -19,6 +19,8 @@ keybind = super+r=reload_config
 
 custom-shader = ./shaders/smoke-and-ghost.glsl
 custom-shader = ./shaders/cursor_blaze.glsl
+
+
 theme = catppuccin-macchiato
 window-save-state = always
 

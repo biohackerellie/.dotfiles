@@ -2,26 +2,51 @@ local M = {
   {
     "neovim/nvim-lspconfig",
     lazy = false,
-    config = function()
-      local lspconfig = require("lspconfig")
+    config = function(_, opts)
+      local lspconfig = vim.lsp.config
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+      local U = require("ellie.util").lsp
       require("ellie.plugins.lsp.diagnostic").setup()
       require("lspconfig.ui.windows").default_options.border = require("ellie.config").get_border()
 
-      local on_attach = function(_client, _buffer)
-        -- require("ellie.plugins.lsp.keymaps").on_attach(buffer)
-        -- require("ellie.plugins.lsp.codelens").on_attach(client, buffer)
-        -- require("ellie.plugins.lsp.highlight").on_attach(client, buffer)
-      end
+      local on_attach = U.on_attach(function(client, buffer)
+        require("ellie.plugins.lsp.keymaps").on_attach(client, buffer)
+        require("ellie.plugins.lsp.codelens").on_attach(client, buffer)
+        require("ellie.plugins.lsp.highlight").on_attach(client, buffer)
+        if client.name == "svelte" then
+          vim.api.nvim_create_autocmd("BufWritePost", {
+            pattern = { "*.js", "*.ts", "*.svelte" },
+            callback = function(ctx)
+              client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+            end,
+          })
+        end
+        if vim.bo[buffer].filetype == "svelte" then
+          vim.api.nvim_create_autocmd("BufWritePost", {
+            pattern = { "*.js", "*.ts", "*.svelte" },
+            callback = function(ctx)
+              client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+            end,
+          })
+        end
+      end)
 
+      local lsp_flags = {
+        debounce_text_changes = 150,
+      }
       -- require("typescript-tools").setup({
       -- 	on_attach = on_attach,
       -- })
 
-      -- servers
-      lspconfig.lua_ls.setup({
+      -- Servers {{{
+      -- Lua {{{
+      lspconfig.lua_ls = {
+        capabilities = capabilities,
         on_attach = on_attach,
+        flags = lsp_flags,
+        cmd = { "lua-language-server" },
+        filetypes = { "lua" },
         settings = {
           Lua = {
             diagnostics = {
@@ -30,70 +55,112 @@ local M = {
             },
           },
         },
-      })
-      lspconfig.basedpyright.setup({
-        capabilities = capabilities,
-        settings = {
-          basedpyright = {
-            analysis = {
-              typeCheckingMode = "basic",
-            },
-          },
-        },
-      })
-      lspconfig.gdscript.setup({
+      }
+      vim.lsp.enable('lua_ls')
+      -- }}}
+
+      -- GdScript {{{
+      lspconfig.gdscript = {
         on_attach = on_attach,
         capabilities,
         flags = lsp_flags,
         cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
         filetypes = { "gd", "gdscript", "gdscript3" },
-      })
-      lspconfig.rust_analyzer.setup({
+      }
+      vim.lsp.enable('gdscript')
+      -- }}}
+
+      -- Rust {{{
+      lspconfig.rust_analyzer = {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        cmd = { "rust-analyzer" },
+        filetypes = { "rust", "rs" },
         diagnostics = {
           refreshSupport = false,
         },
         procMacro = {
           enable = true,
         },
-      })
-      lspconfig.vtsls.setup({
-        capabilities = capabilities
-      })
-      lspconfig.vimls.setup({
+      }
+      vim.lsp.enable('rust_analyzer')
+      -- }}}
+
+      -- Typescript {{{
+      lspconfig.vtsls = {
         on_attach = on_attach,
-      })
-      lspconfig.gopls.setup({
-        filetypes = { "go", "gomod", "gowork", "gotmpl" },
         capabilities = capabilities,
+        cmd = { "vtsls", "--stdio" },
+        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+      }
+      vim.lsp.enable('vtsls')
+      -- }}}
+
+      -- Vim {{{
+      lspconfig.vimls = {
+        filetypes = { "vim" },
+        cmd = { "vim-language-server", "--stdio" },
+        on_attach = on_attach,
+      }
+      vim.lsp.enable('vimls')
+      -- }}}
+
+      -- Go {{{
+      lspconfig.gopls = {
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        cmd = { "gopls" },
         settings = {
           env = {
             GOEXPERIMENT = "rangefunc",
             GOFLAGS = "-tags=postgres",
           },
+          on_attach = on_attach,
+          capabilities = capabilities,
+          init_options = {
+            buildFlags = { "-tags=sqlite" },
+          },
+          usePlaceholders = false,
+          ["local"] = "<repo>",
+          buildFlags = { "-tags=sqlite" },
           formatting = {
             gofumpt = true,
           },
         },
-      })
-      lspconfig.templ.setup({
+      }
+      vim.lsp.enable('gopls')
+      -- }}}
+
+      -- HTML {{{
+      lspconfig.templ = {
         on_attach = on_attach,
-      })
-      lspconfig.svelte.setup({
+      }
+      vim.lsp.enable('templ')
+      -- }}}
+      lspconfig.svelte = {
         filetypes = { "svelte" },
         on_attach = on_attach,
-      })
-      lspconfig.jsonls.setup({
+      }
+      vim.lsp.enable('svelte')
+      -- }}}
+      lspconfig.jsonls = {
         on_attach = on_attach,
-      })
-      lspconfig.astro.setup({})
-      lspconfig.biome.setup({
+      }
+      vim.lsp.enable('jsonls')
+      lspconfig.biome = {
         on_attach = on_attach,
-      })
+        capabilities = capabilities,
+      }
+      vim.lsp.enable('biome')
 
-      lspconfig.zls.setup({})
-      lspconfig.cssls.setup({})
-
-      lspconfig.tailwindcss.setup({
+      lspconfig.zls = {
+        on_attach = on_attach
+      }
+      vim.lsp.enable('zls')
+      lspconfig.cssls = {
+        on_attach = on_attach
+      }
+      vim.lsp.enable('cssls')
+      lspconfig.tailwindcss = {
         on_attach = on_attach,
         filetypes = {
           -- html
@@ -182,7 +249,10 @@ local M = {
             },
           },
         },
-      })
+      }
+      vim.lsp.enable('tailwindcss')
+
+      -- }}}
     end,
   },
   -- {
