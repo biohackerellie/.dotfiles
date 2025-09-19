@@ -4,6 +4,7 @@
 **/packer_compiled.lua
 *.tmp
 *.temp
+.env
 *.bak
 *.old
 *.backup
