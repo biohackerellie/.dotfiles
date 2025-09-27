@@ -21,7 +21,7 @@ custom-shader = ./shaders/smoke-and-ghost.glsl
 custom-shader = ./shaders/cursor_blaze.glsl
 
 
-theme = catppuccin-macchiato
+theme = Catppuccin Macchiato
 window-save-state = always
 
 shell-integration-features = no-cursor
