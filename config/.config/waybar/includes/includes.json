@@ -1,8 +1,5 @@
 {
     "include": [
-        "/home/ellie/.config/waybar/modules/custom.jsonc",
-        "/home/ellie/.config/waybar/modules/hyprland.jsonc",
-        "/home/ellie/.config/waybar/modules/system.jsonc",
         "/home/ellie/.local/share/waybar/modules/image#wallpaper.json",
         "/home/ellie/.local/share/waybar/modules/privacy.json",
         "/home/ellie/.local/share/waybar/modules/tray.json",

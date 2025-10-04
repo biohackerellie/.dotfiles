@@ -1,76 +1,128 @@
 {
-  // sourced from header module //
-  "layer": "top",
-  "output": [
-    "*"
-  ],
-  "height": 10,
-  "exclusive": true,
-  "passthrough": false,
-  "reload_style_on_change": true,
-  "include": [
-    "$XDG_CONFIG_HOME/waybar/modules/*json*",
-    "$XDG_CONFIG_HOME/waybar/includes/includes.json"
-  ],
-  // positions generated based on config.ctl //
-  "modules-left": [
-    "group/pill#left"
-  ],
-  "group/pill#left": {
-    "orientation": "inherit",
-    "modules": [
-      "wlr/taskbar",
-      "mpris"
-    ]
-  },
-  "modules-center": [
-    "group/pill#center"
-  ],
-  "group/pill#center": {
-    "orientation": "inherit",
-    "modules": [
-      "idle_inhibitor",
-      "clock"
-    ]
-  },
-  "modules-right": [
-    "group/pill#right1",
-    "group/pill#right2",
-    "group/pill#right3",
-    "group/pill#right4"
-  ],
-  "group/pill#right1": {
-    "orientation": "inherit",
-    "modules": [
-      "backlight",
-      "network",
-      "pulseaudio",
-      "pulseaudio#microphone",
-      "custom/updates"
-    ]
-  },
-  "group/pill#right2": {
-    "orientation": "inherit",
-    "modules": [
-      "privacy",
-      "tray",
-      "battery"
-    ]
-  },
-  "group/pill#right3": {
-    "orientation": "inherit",
-    "modules": [
-      "custom/wallchange",
-      "custom/theme",
-      "custom/wbar"
-    ]
-  },
-  "group/pill#right4": {
-    "orientation": "inherit",
-    "modules": [
-      "custom/cliphist",
-      "custom/hyde-menu",
-      "custom/power"
-    ]
-  }
+    "layer": "top",
+    "position": "top",
+    "spacing": 0,
+    "height": 47,
+    "modules-left": [
+        "custom/logo",
+        "hyprland/workspaces",
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "memory",
+        "custom/notify",
+        "pulseaudio"
+    ],
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "on-click-right": "fullscreen",
+        "icon-theme": "WhiteSur",
+        "icon-size": 35,
+        "tooltip-format": "{title}"
+    },
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "default": " ",
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10",
+            "active": "󱓻",
+            "urgent": "󱓻"
+        },
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": []
+        }
+    },
+    "memory": {
+        "interval": 5,
+        "format-alt": "<span font='10' rise='-1000'></span> {used} GB",
+        "format": "<span font='10' rise='-1000'></span> {percentage}%",
+        "tooltip": false,
+        "max-length": 10
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+          "mode": "month",
+          "mode-mon-col": 3,
+          "weeks-pos": "right",
+          "on-scroll": 1,
+          "on-click-right": "mode",
+          "format": {
+            "months": "<span color='#ffead3'><b>{}</b></span>",
+            "days": "<span color='#ecc6d9'><b>{}</b></span>",
+            "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+            "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+            "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+           }
+         },
+         "actions": {
+           "on-click-right": "mode",
+           "on-scroll-up": "shift_up",
+           "on-scroll-down": "shift_down"
+         },
+          "format": " {:%a %d %b 󰥔 %H:%M}",
+          "interval": 1
+    },
+    "custom/notify": {
+      "escape": true,
+      "exec": "swaync-client -swb",
+      "exec-if": "which swaync-client",
+      "format": "{icon} {0}",
+      "format-icons": {
+        "dnd-inhibited-none": " <sup></sup>",
+        "dnd-inhibited-notification": "<span foreground='#f38ba8'><sup></sup></span>",
+        "dnd-none": " ",
+        "dnd-notification": " <span foreground='#f38ba8'><sup></sup></span>",
+        "inhibited-none": "<sup>󰜺</sup>",
+        "inhibited-notification": "󰵙<span foreground='#f38ba8'><sup></sup></span>",
+        "none": " ",
+        "notification": " <span foreground='#f38ba8'><sup></sup></span>"
+      },
+      "on-click": "sleep 0.1 && swaync-client -t -sw",
+      "return-type": "json",
+      "tooltip": false
+    },
+    "pulseaudio": {
+        "format": "{icon}{volume}% {format_source}",
+        "nospacing": 1,
+        //"tooltip-format": "Volume : {volume}%",
+        "format-muted": "󰝟 {volume}% {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " Muted",
+        "format-icons": {
+            "default": ["󰖀 ","󰕾 ","  "]
+        },
+        "on-click": "pavucontrol",
+        "scroll-step": 0
+    },
+    "custom/logo": {
+        "format": "   ",
+        "tooltip": false,
+    }
 }

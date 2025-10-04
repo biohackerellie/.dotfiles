@@ -1,6 +1,7 @@
 /* User custom styles */
+
 * {
-  border-radius: 1em;
-  font-family: "JetBrainsMono Nerd Font", "JetBrainsMono Nerd Font";
-  font-size: 14px;
+    border-radius: 0em;
+    font-family: "JetBrainsMono Nerd Font","JetBrainsMono Nerd Font";
+    font-size: 14px;
 }
