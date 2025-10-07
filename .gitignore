@@ -26,11 +26,6 @@ config/.config/hyde/themes/Catppuccin Mocha
 config/.config/hypr/themes
 config/.config/kitty
 config/.config/menus
-config/.config/nwg-look
-config/.config/qt5ct
-config/.config/qt6ct
-config/.config/wlogout
-config/.config/wofi
 config/.config/xsettingsd
 config/.config/baloofilerc
 config/.config/dolphinrc
