@@ -5,7 +5,8 @@
     "height": 47,
     "modules-left": [
         "custom/logo",
-        "hyprland/workspaces",
+        "wlr/taskbar",
+        "hyprland/workspaces"
     ],
     "modules-center": [
         "clock"
@@ -20,7 +21,7 @@
         "format": "{icon}",
         "on-click": "activate",
         "on-click-right": "fullscreen",
-        "icon-theme": "WhiteSur",
+        "icon-theme": "Tela circle purple",
         "icon-size": 35,
         "tooltip-format": "{title}"
     },

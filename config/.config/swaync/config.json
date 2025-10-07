@@ -92,7 +92,7 @@
         },
         {
           "label": "",
-          "command": "vscodium /home/USER/.config/hypr/hyprland.conf"
+          "command": "nvim /home/ellie/.config/hypr/hyprland.conf"
         }
         
       ]
