@@ -1,7 +1,7 @@
 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 source $ZDOTDIR/.env.zsh
 
@@ -13,6 +13,8 @@ if [ ! -d "$ZINIT_HOME" ]; then
    mkdir -p "$(dirname $ZINIT_HOME)"
    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
+
+source "${ZINIT_HOME}/zinit.zsh"
 # Add in Powerlevel10k
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit light Aloxaf/fzf-tab
@@ -110,6 +112,7 @@ alias upg='sudo -iu postgres psql'
 alias tmux='tmux -f $HOME/.dotfiles/config/.config/tmux/tmux.conf'
 alias wallpaper='~/.config/hyprland-de/scripts/wallpaper.sh'
 alias py='source ~/.venv/bin/activate'
-if [ -e /home/ellie/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ellie/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+fastfetch --logo-type kitty

@@ -17,7 +17,7 @@ font-feature = cv26
 keybind = super+r=reload_config
 
 
-custom-shader = ./shaders/cursor_blaze.glsl
+#custom-shader = ./shaders/cursor_blaze.glsl
 
 
 theme = TokyoNight Storm
