@@ -24,7 +24,6 @@ config/.config/gtk-3.0
 config/.config/Kvantum/wallbash/wallbash.svg
 config/.config/hyde/themes/Catppuccin Mocha
 config/.config/hypr/themes
-config/.config/kitty
 config/.config/menus
 config/.config/xsettingsd
 config/.config/baloofilerc
