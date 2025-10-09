@@ -10,6 +10,7 @@
 *.backup
 **/lazy-lock.json
 lazy-lock.json
+.zsh_history
 ./config/.config/nvim/lazy-lock.json
 ./config/.config/hypr/monitors.conf
 ./config/.config/dunst/
