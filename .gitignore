@@ -17,7 +17,6 @@ lazy-lock.json
 ./config/.config/Kvantum/
 **/icons/**
 config/.config/hypr/monitors.conf
-config/.config/hypr/windowrules.conf
 config/.config/nvim/lazy-lock.json
 config/.config/Kvantum/wallbash
 config/.config/dunst
