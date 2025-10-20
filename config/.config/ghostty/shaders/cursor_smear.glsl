@@ -1,3 +1,4 @@
+const vec2 OFFSET_FACTOR = vec2(-0.5, 0.5);
 float getSdfRectangle(in vec2 p, in vec2 xy, in vec2 b)
 {
     vec2 d = abs(p - xy) - b;
@@ -24,6 +25,19 @@ float seg(in vec2 p, in vec2 a, in vec2 b, inout float s, float d) {
     return d;
 }
 
+float segLite(in vec2 p, in vec2 a, in vec2 b, inout float s, float d) {
+  vec2 e = b - a;
+  vec2 w = p - a;
+
+  float t = clamp(dot(w, e) / dot(e, e), 0.0, 1.0);
+  vec2 proj = a + e * t;
+  d = min(d, dot(p - proj, p - proj));
+
+  float side = sign(e.x * w.y - e.y * w.x);
+  s *= side;
+  return d;
+}
+
 float getSdfParallelogram(in vec2 p, in vec2 v0, in vec2 v1, in vec2 v2, in vec2 v3) {
     float s = 1.0;
     float d = dot(p - v0, p - v0);
@@ -41,7 +55,8 @@ vec2 normalize(vec2 value, float isPosition) {
 }
 
 float antialising(float distance) {
-    return 1. - smoothstep(0., normalize(vec2(2., 2.), 0.).x, distance);
+    float edgeWidth = 1.0 / iResolution.y;
+    return 1.0 - smoothstep(0., edgeWidth, distance);
 }
 
 float determineStartVertexFactor(vec2 a, vec2 b) {
@@ -57,7 +72,8 @@ vec2 getRectangleCenter(vec4 rectangle) {
     return vec2(rectangle.x + (rectangle.z / 2.), rectangle.y - (rectangle.w / 2.));
 }
 float ease(float x) {
-    return pow(1.0 - x, 3.0);
+  float y = 1.0 -x;
+  return y * y * y;
 }
 vec4 saturate(vec4 color, float factor) {
     float gray = dot(color, vec4(0.299, 0.587, 0.114, 0.)); // luminance
@@ -76,7 +92,6 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     #endif
     // Normalization for fragCoord to a space of -1 to 1;
     vec2 vu = normalize(fragCoord, 1.);
-    vec2 offsetFactor = vec2(-.5, 0.5);
 
     // Normalization for cursor position and size;
     // cursor xy has the postion in a space of -1 to 1;
@@ -94,11 +109,15 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     vec2 v2 = vec2(previousCursor.x + currentCursor.z * invertedVertexFactor, previousCursor.y);
     vec2 v3 = vec2(previousCursor.x + currentCursor.z * vertexFactor, previousCursor.y - previousCursor.w);
 
-    float sdfCurrentCursor = getSdfRectangle(vu, currentCursor.xy - (currentCursor.zw * offsetFactor), currentCursor.zw * 0.5);
+    float sdfCurrentCursor = getSdfRectangle(vu, currentCursor.xy - (currentCursor.zw * OFFSET_FACTOR), currentCursor.zw * 0.5);
     float sdfTrail = getSdfParallelogram(vu, v0, v1, v2, v3);
 
     float progress = clamp((iTime - iTimeCursorChange) / DURATION, 0.0, 1.0);
     float easedProgress = ease(progress);
+    if (progress <= 0.0) {
+      return;
+    }
+
     // Distance between cursors determine the total length of the parallelogram;
     vec2 centerCC = getRectangleCenter(currentCursor);
     vec2 centerCP = getRectangleCenter(previousCursor);
