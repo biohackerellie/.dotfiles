@@ -103,7 +103,7 @@ export PATH="$PATH:/usr/bin/winepath"
 export WARP_ENABLE_WAYLAND=1
 export MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA
 export BROWSER=zen
-export GOFLAGS="-tags=sqlite"
+export GOFLAGS="-tags=postgres"
 
 # Aliases
 alias ls='ls --color'

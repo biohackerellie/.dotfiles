@@ -7,6 +7,7 @@ local M = {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
       local U = require("ellie.util").lsp
+      local Util = require("ellie.util")
       require("ellie.plugins.lsp.diagnostic").setup()
       require("lspconfig.ui.windows").default_options.border = require("ellie.config").get_border()
 
@@ -14,20 +15,19 @@ local M = {
         require("ellie.plugins.lsp.keymaps").on_attach(client, buffer)
         require("ellie.plugins.lsp.codelens").on_attach(client, buffer)
         require("ellie.plugins.lsp.highlight").on_attach(client, buffer)
-        if client.name == "svelte" then
-          vim.api.nvim_create_autocmd("BufWritePost", {
-            pattern = { "*.js", "*.ts", "*.svelte" },
-            callback = function(ctx)
-              client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
-            end,
-          })
-        end
-        if vim.bo[buffer].filetype == "svelte" then
-          vim.api.nvim_create_autocmd("BufWritePost", {
-            pattern = { "*.js", "*.ts", "*.svelte" },
-            callback = function(ctx)
-              client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
-            end,
+        if client.name == "biome" then
+          Util.augroup("BiomeFixAll", {
+            clear = true,
+            event = "BufWritePre",
+            command = function()
+              vim.lsp.buf.code_action({
+                context = {
+                  only = { "source.fixAll.biome" },
+                  diagnostics = {},
+                },
+                apply = true
+              })
+            end
           })
         end
       end)
@@ -116,12 +116,8 @@ local M = {
           },
           on_attach = on_attach,
           capabilities = capabilities,
-          init_options = {
-            buildFlags = { "-tags=sqlite" },
-          },
           usePlaceholders = false,
           ["local"] = "<repo>",
-          buildFlags = { "-tags=sqlite" },
           formatting = {
             gofumpt = true,
           },
