@@ -1,6 +1,7 @@
 **/tmux/plugins/**
 .icons
 **/tmux/plugins
+*.zsh_history
 **/packer_compiled.lua
 *.tmp
 *.temp
