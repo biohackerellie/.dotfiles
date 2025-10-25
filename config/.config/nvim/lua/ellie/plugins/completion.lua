@@ -89,10 +89,11 @@ local M = {
         },
         sources = cmp.config.sources({
           -- { name = "copilot" },
+          { name = "supermaven" },
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "path" },
-          { name = "npm",     keyword_length = 4 },
+          { name = "npm",       keyword_length = 4 },
         }, {
           {
             name = "buffer",
@@ -112,14 +113,14 @@ local M = {
             if icons[item.kind] then
               item.kind = icons[item.kind] .. item.kind
             end
-            -- if entry.source.name ~= "copilot" then
-            -- 	local widths = { abbr = 27, menu = 35 }
-            -- 	for key, value in pairs(widths) do
-            -- 		if item[key] and vim.fn.strchars(item[key]) > value then
-            -- 			item[key] = vim.fn.strcharpart(item[key], 0, value - 3) .. "..."
-            -- 		end
-            -- 	end
-            -- end
+            if entry.source.name ~= "supermaven" then
+              local widths = { abbr = 27, menu = 35 }
+              for key, value in pairs(widths) do
+                if item[key] and vim.fn.strchars(item[key]) > value then
+                  item[key] = vim.fn.strcharpart(item[key], 0, value - 3) .. "..."
+                end
+              end
+            end
             return item
           end,
         },

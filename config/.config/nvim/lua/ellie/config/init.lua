@@ -48,6 +48,7 @@ local defaults = {
       Value         = " ",
       Variable      = " ",
       Copilot       = " ",
+      Supermaven    = "",
     },
   },
   banner = [[

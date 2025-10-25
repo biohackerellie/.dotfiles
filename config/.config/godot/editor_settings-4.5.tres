@@ -6,6 +6,7 @@ keycode = 4194326
 [resource]
 interface/editor/code_font_contextual_ligatures = 0
 interface/editor/code_font = "/home/ellie/.local/share/fonts/CascadiaCove/CaskaydiaCoveNerdFont-Regular.ttf"
+interface/editor/single_window_mode = true
 interface/editor/save_on_focus_loss = true
 interface/editor/import_resources_when_unfocused = true
 interface/editor/vsync_mode = 0
