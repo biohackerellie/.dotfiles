@@ -6,17 +6,17 @@ function M.get()
   if not M._keys then
     -- stylua: ignore
     M._keys = {
-      { "gd",          "<CMD>Telescope lsp_definitions<CR>",            desc = "Goto Definition",      deps = "textDocument/definition" },
-      { "gD",          vim.lsp.buf.declaration,                         desc = "Goto Declaration",     deps = "textDocument/declaration" },
-      { "gr",          "<CMD>Telescope lsp_references<CR>",             desc = "References",           deps = "textDocument/references" },
-      { "gi",          "<CMD>Telescope lsp_implementations<CR>",        desc = "Goto Implementation",  deps = "textDocument/implementation" },
-      { "gt",          "<CMD>Telescope lsp_type_definitions<CR>",       desc = "Goto Type Definition", deps = "textDocument/definition" },
-      { "K",           require("ellie.config.hover").hover_or_fallback, desc = "Hover" },
-      { "gK",          require("hover").select,                         desc = "hover.nvim (select)" },
-      { "<C-k>",       vim.lsp.buf.signature_help,                      mode = "i",                    desc = "Signature Help",             deps = "textDocument/signatureHelp" },
-      { "<leader>cr",  vim.lsp.buf.rename,                              desc = "Rename",               deps = "textDocument/rename" },
-      { "<leader>ca",  vim.lsp.buf.code_action,                         desc = "Code action",          mode = { "n", "v" },                 deps = "textDocument/codeAction" },
-      { "<MouseMove>", require("hover").mouse,                          desc = "hover.nvim (mouse)" },
+      { "gd",         "<CMD>Telescope lsp_definitions<CR>",            desc = "Goto Definition",      deps = "textDocument/definition" },
+      { "gD",         vim.lsp.buf.declaration,                         desc = "Goto Declaration",     deps = "textDocument/declaration" },
+      { "gr",         "<CMD>Telescope lsp_references<CR>",             desc = "References",           deps = "textDocument/references" },
+      { "gi",         "<CMD>Telescope lsp_implementations<CR>",        desc = "Goto Implementation",  deps = "textDocument/implementation" },
+      { "gt",         "<CMD>Telescope lsp_type_definitions<CR>",       desc = "Goto Type Definition", deps = "textDocument/definition" },
+      { "K",          require("ellie.config.hover").hover_or_fallback, desc = "Hover" },
+      { "gK",         require("hover").select,                         desc = "hover.nvim (select)" },
+      { "<C-k>",      vim.lsp.buf.signature_help,                      mode = "i",                    desc = "Signature Help",             deps = "textDocument/signatureHelp" },
+      { "<leader>cr", vim.lsp.buf.rename,                              desc = "Rename",               deps = "textDocument/rename" },
+      { "<leader>ca", vim.lsp.buf.code_action,                         desc = "Code action",          mode = { "n", "v" },                 deps = "textDocument/codeAction" },
+      -- { "<MouseMove>", require("hover").mouse,                          desc = "hover.nvim (mouse)" },
     }
   end
   return M._keys

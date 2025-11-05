@@ -88,7 +88,7 @@ local M = {
   config = function()
     local transparent = require("ellie.config").transparent
     require("tokyonight").setup({
-      style = "storm",
+      style = "moon",
       transparent = transparent,
       terminal_colors = true,
       styles = {

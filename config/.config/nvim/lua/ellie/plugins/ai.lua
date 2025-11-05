@@ -28,9 +28,9 @@ local M = {
       local supermaven = require("supermaven-nvim")
       supermaven.setup({
         keymaps = {
-          accept_suggestion = "<A-w>",
+          accept_suggestion = "<A-l>",
           clear_suggestion = "<A-c>",
-          accept_word = "<A-l>",
+          accept_word = "<A-w>",
         },
         ignore_filetypes = { ".env" }
       })
