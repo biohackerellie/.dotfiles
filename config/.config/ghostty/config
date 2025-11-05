@@ -20,7 +20,7 @@ gtk-wide-tabs = false
 gtk-titlebar-style = native
 window-show-tab-bar = never
 
-custom-shader = ./shaders/cursor_smear.glsl
+custom-shader = ./shaders/cursor_tail.glsl
 
 
 theme = TokyoNight Storm

@@ -10,13 +10,21 @@
     "context": "Workspace",
     "bindings": {
       "ctrl-h": "project_panel::ToggleFocus",
-      "alt-h": "buffer_search::Deploy"
+      "alt-h": "buffer_search::Deploy",
+      "ctrl-n": "workspace::ToggleZoom",
+      "space g g": "git_panel::ToggleFocus"
     }
   },
   {
     "context": "Editor",
     "bindings": {
       // "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "!Editor && !Terminal",
+    "bindings": {
+      "ctrl-l": "editor::ToggleFocus"
     }
   },
   {
@@ -29,9 +37,20 @@
     "context": "vim_mode == normal",
     "bindings": {
       "space f f": "file_finder::Toggle",
-
+      "space b d": "pane::CloseActiveItem",
+      "space b shift-d": "pane::CloseOtherItems",
       "ctrl-h": "project_panel::ToggleFocus",
-      "alt-h": "buffer_search::Deploy"
+      "alt-h": "buffer_search::Deploy",
+      "g c": "editor::ToggleComments",
+      "space c a": "editor::ToggleCodeActions",
+      "space c d": "editor::ToggleDiagnostics",
+      "space p": "terminal_panel::Toggle"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "g c": "editor::ToggleComments"
     }
   }
 ]
