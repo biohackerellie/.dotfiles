@@ -7,11 +7,18 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "icon_theme": "Catppuccin Frappé",
+  "agent": {
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-3-5-sonnet-latest"
+    },
+    "model_parameters": []
+  },
+  "icon_theme": "Base Charmed Icons",
   "vim_mode": true,
   "buffer_font_family": "Cascadia Code",
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
+  "ui_font_size": 20,
+  "buffer_font_size": 20,
   "buffer_font_features": {
     "calt": true,
     "ss01": true
@@ -19,7 +26,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Catppuccin Frappé (Blur)"
+    "dark": "Tokyo Night Storm"
   },
   // "experimental.theme_overrides": {
   //   "background.appearance": "blurred",
