@@ -44,7 +44,7 @@
       "g c": "editor::ToggleComments",
       "space c a": "editor::ToggleCodeActions",
       "space c d": "editor::ToggleDiagnostics",
-      "space p": "terminal_panel::Toggle"
+      "ctrl-j": "terminal_panel::Toggle"
     }
   },
   {

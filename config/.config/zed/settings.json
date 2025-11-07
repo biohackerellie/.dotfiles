@@ -8,6 +8,10 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "agent": {
+    "inline_assistant_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-5-latest"
+    },
     "default_model": {
       "provider": "anthropic",
       "model": "claude-3-5-sonnet-latest"
@@ -26,7 +30,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Tokyo Night Storm"
+    "dark": "Catppuccin Frappé (Blur)"
   },
   // "experimental.theme_overrides": {
   //   "background.appearance": "blurred",
