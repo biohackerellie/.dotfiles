@@ -1,6 +1,6 @@
 background-opacity = 0.9
 confirm-close-surface = false
-window-decoration = true
+window-decoration = false
 font-size = 16
 font-family = "Cascadia Code PL"
 font-feature = calt
@@ -14,7 +14,7 @@ font-feature = cv16
 font-feature = cv31 
 font-feature = cv25 
 font-feature = cv26 
-keybind = super+r=reload_config
+keybind = ctrl+alt+r=reload_config
 keybind = ctrl+alt+t=toggle_tab_overview
 gtk-wide-tabs = false
 gtk-titlebar-style = native
