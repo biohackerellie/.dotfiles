@@ -22,3 +22,14 @@ stow config --adopt
 ## This will merge your existing files from your .config directory, so using git, check through the changes and undo any that overwrite these dots
 ```
 
+## Note for niri on wayland
+
+If using uwsm, add the following entry  `/usr/share/wayland-sessions/niri-uwsm.desktop` : 
+```sh
+[Desktop Entry]
+Name=Niri (UWSM)
+Comment=A scrollable-tiling Wayland compositor
+Exec=uwsm start -F -- niri-session
+Type=Application
+DesktopNames=niri`
+```
