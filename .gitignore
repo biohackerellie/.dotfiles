@@ -21,7 +21,6 @@ config/.config/hypr/monitors.conf
 config/.config/nvim/lazy-lock.json
 config/.config/Kvantum/wallbash
 config/.config/dunst
-config/.config/gtk-3.0
 config/.config/Kvantum/wallbash/wallbash.svg
 config/.config/hyde/themes/Catppuccin Mocha
 config/.config/hypr/themes
@@ -29,4 +28,3 @@ config/.config/menus
 config/.config/xsettingsd
 config/.config/baloofilerc
 config/.config/dolphinrc
-config/.gtkrc-2.0
