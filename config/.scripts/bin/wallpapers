@@ -7,12 +7,17 @@
 wallpapersDirectory="${XDG_CONFIG_HOME:-$HOME/.config}/swww/wallpapers"
 rofiThemesDirectory="${XDG_CONFIG_HOME:-$HOME/.config}/rofi/wallpaper"
 
+swwwTransitionFps="120"
+swwwTransitionType="grow"
+swwwTransitionPos="bottom-right"
+swwwTransitionDurationInSeconds="2"
+
 # Transition config
-fps="170"
-type="fade"
-duration="1"
+fps="120"
+type="grow"
+duration="2"
 bezier=".43,1.19,1,.4"
-swwwParams="--transition-fps ${fps} --transition-type ${type} --transition-duration ${duration}"
+swwwParams="--transition-fps ${fps} --transition-type ${type} --transition-duration ${duration} --transition-pos ${swwwTransitionPos}"
 wallpapers=($(ls "${wallpapersDirectory}" | grep -E ".jpg$|.jpeg$|.png$|.gif$"))
 rofiCommand="rofi -show -dmenu -config ${rofiThemesDirectory}/wallpaper.rasi"
 

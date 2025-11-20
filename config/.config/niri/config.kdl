@@ -230,6 +230,7 @@ binds {
     Ctrl+Alt+Delete { spawn "rofi" "-show" "menu" "-modi" "'menu:~/.config/rofi/scripts/rofi-power-menu-niri --choices=logout/suspend/reboot/shutdown'" "-config" "~/.config/rofi/powers.rasi"; }
     Super+Space allow-when-locked=true hotkey-overlay-title="Spawn Rofi" { spawn "rofi" "-show" "drun" "-config" "/home/ellie/.config/rofi/config1.rasi"; }
     Super+Shift+P hotkey-overlay-title="Color Picker" { spawn "hyprpicker" "-an"; }
+    Mod+Comma { spawn-sh "~/.scripts/bin/emojis";}
     
 
     // Audio Controls

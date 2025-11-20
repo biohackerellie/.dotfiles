@@ -1,137 +1,127 @@
 {
   "layer": "top", // Waybar at top layer
-  // "position": "bottom", // Waybar position (top|bottom|left|right)
+  "position": "top", // Waybar position (top|bottom|left|right)
   // "width": 1280, // Waybar width
-  //"spacing": 4, // Gaps between modules (4px)
+  "spacing": 8, // Gaps between modules (4px)
   "height": 8, // Waybar height (to be removed for auto height)
   "modules-left": [
-    "custom/barlogo",
+    "custom/distrologo",
+    "niri/workspaces",
+    "niri/window",
     "cpu",
     "memory",
-    "battery",
-    "niri/window",
-    "niri/workspaces"
+    "temperature"
   ],
   "modules-center": [
     "clock"
   ],
   "modules-right": [
-    "mpris",
+    "tray",
+    "battery",
+    "battery#bat1",
     "pulseaudio",
-    "backlight",
-    "battery#bat2",
-    "tray"
+    "custom/power"
   ],
-  "keyboard-state": {
-    "numlock": true,
-    "capslock": true,
-    "format": "{name} {icon}",
+  "niri/workspaces": {
+    "format": "{value}",
     "format-icons": {
-      "locked": "",
-      "unlocked": ""
+      "surgent": "[!]",
+      "focused": "[]",
+      "default": "[]"
+    },
+    "persistent-workspaces": {
+      "*": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
     }
   },
-  "mpris": {
-    "interval": 10,
-    "format": "{player_icon} {status_icon} <i>{dynamic}</i>",
-    "format-paused": "{player_icon} {status_icon} <i>{dynamic}</i>",
-    "on-click": "playerctl play-pause",
-    "scroll-step": 5.0,
-    "on-scroll-up": "$HOME/.config/hypr/scripts/Volume.sh --inc",
-    "on-scroll-down": "$HOME/.config/hypr/scripts/Volume.sh --dec",
-    "smooth-scrolling-threshold": 1,
-    "player-icons": {
-      "chromium": "",
-      "default": "",
-      "firefox": "",
-      "kdeconnect": "",
-      "mopidy": "",
-      "mpv": "󰐹",
-      "spotify": "",
-      "vlc": "󰕼",
-    },
-    "status-icons": {
-      "paused": "󰐎",
-      "playing": "",
-      "stopped": "",
-    },
-    // "ignored-players": ["firefox"]
-    "max-length": 30,
+  "niri/language": {
+    "format": "{short}"
   },
   "tray": {
-    // "icon-size": 21,
-    "spacing": 10
+    "icon-size": 20,
+    "spacing": 2
   },
   "clock": {
-    "interval": 60,
-    "format": "  {:%H:%M} ",
-    "format-alt": " {:%Y-%m-%d}"
-  },
-  "niri/window": {
-    "max-length": 25, // Characters count
-    "separate-outputs": true,
-    "icon": true
+    "format": "{:%H:%m}",
+    "format-alt": "{:%Y-%m-%d}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "cpu": {
-    "format": "  {usage}% ",
+    "format": " {usage}%",
     "tooltip": false
   },
   "memory": {
-    "format": "  {avail} GB "
+    "format": " {}%"
   },
-  "backlight": {
-    // "device": "acpi_video1",
-    "format": "{icon} {percent}% ",
+  "temperature": {
+    "thermal-zone": 5,
+    "critical-threshold": 80,
+    "format-critical": "{temperatureC}°C {hot}",
     "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
+      ""
+    ],
+    "format": "{icon} {temperatureC}°C"
   },
   "battery": {
+    "bat": "BAT0",
     "states": {
-      // "good": 95,
+      "good": 85,
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon} {capacity} ",
-    "format-charging": "  {capacity}",
-    "format-plugged": " {capacity}",
-    "format-alt": "{icon} {time} ",
-    // "format-good": "", // An empty format will hide the module
-    // "format-full": "",
+    "format": "{capacity}% {icon}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
     "format-icons": [
-      "󰂎",
-      "󰁻",
-      "󰁽",
-      "󰂁",
-      "󰁹"
+      "",
+      "",
+      "",
+      "",
+      ""
     ]
   },
-  "battery#bat2": {
-    "bat": "BAT2"
+  "battery#bat1": {
+    "bat": "BAT1",
+    "states": {
+      "good": 85,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
-  "network": {
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "  {signalStrength}",
-    "format-ethernet": "{ipaddr}/{cidr} ",
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
   },
   "pulseaudio": {
-    // "scroll-step": 1, // %, can be a float
-    "format": "{icon}  {volume} % ",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": " {format_source}",
+    "scroll-step": 2.5,
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{volume}% {icon} ",
+    "format-bluetooth-muted": " {icon} ",
+    "format-muted": " Muted",
     "format-source": "{volume}% ",
     "format-source-muted": "",
     "format-icons": {
@@ -149,9 +139,29 @@
     },
     "on-click": "pavucontrol"
   },
-  "custom/barlogo": {
-    "tooltip": false,
-    //"format" : "<span font='16'>󰄛</span>",
-    "format": "󰄛",
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": true,
+    "tooltip-format": "Suspend system",
+    "on-click": "wlogout"
   },
+  "custom/wifi": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "nm-connection-editor"
+  },
+  "custom/bluetooth": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "blueberry"
+  },
+  "custom/distrologo": {
+    "format": "{icon}",
+    "tooltip-format": "I'm using Arch BTW",
+    "tooltip": true,
+    "format-icons": {
+      "default": ""
+    },
+    "on-click": "rofi -modi drun,run -show drun -no-persist-history"
+  }
 }
