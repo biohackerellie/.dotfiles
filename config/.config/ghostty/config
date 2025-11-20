@@ -1,4 +1,4 @@
-background-opacity = 0.9
+background-opacity = 0.8
 confirm-close-surface = false
 window-decoration = false
 font-size = 16
@@ -23,7 +23,7 @@ window-show-tab-bar = never
 custom-shader = ./shaders/cursor_tail.glsl
 
 
-theme = TokyoNight Storm
+theme = "Matugen"
 window-save-state = always
 
 shell-integration-features = no-cursor

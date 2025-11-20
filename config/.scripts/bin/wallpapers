@@ -45,7 +45,7 @@ main(){
   done
 
   if ((wallpaperIndex != -1)); then
-    swww img "${wallpapersDirectory}/${wallpapers[${wallpaperIndex}]}" ${swwwParams}
+    matugen image "${wallpapersDirectory}/${wallpapers[${wallpaperIndex}]}" 
   else
     echo "Image not found."
     exit 1

@@ -1,58 +1,87 @@
 {
   "layer": "top", // Waybar at top layer
-  "position": "top", // Waybar position (top|bottom|left|right)
+  // "position": "bottom", // Waybar position (top|bottom|left|right)
   // "width": 1280, // Waybar width
-  // Choose the order of the modules
+  //"spacing": 4, // Gaps between modules (4px)
+  "height": 8, // Waybar height (to be removed for auto height)
   "modules-left": [
-    "custom/launcher",
+    "custom/barlogo",
+    "cpu",
+    "memory",
+    "battery",
+    "niri/window",
     "niri/workspaces"
   ],
   "modules-center": [
     "clock"
   ],
   "modules-right": [
-    "custom/music",
+    "mpris",
     "pulseaudio",
-    "niri/language",
-    "tray",
-    "custom/power"
+    "backlight",
+    "battery#bat2",
+    "tray"
   ],
-  "niri/workspaces": {
-    "format": "{icon}",
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{name} {icon}",
     "format-icons": {
-      "default": ""
+      "locked": "",
+      "unlocked": ""
+    }
+  },
+  "mpris": {
+    "interval": 10,
+    "format": "{player_icon} {status_icon} <i>{dynamic}</i>",
+    "format-paused": "{player_icon} {status_icon} <i>{dynamic}</i>",
+    "on-click": "playerctl play-pause",
+    "scroll-step": 5.0,
+    "on-scroll-up": "$HOME/.config/hypr/scripts/Volume.sh --inc",
+    "on-scroll-down": "$HOME/.config/hypr/scripts/Volume.sh --dec",
+    "smooth-scrolling-threshold": 1,
+    "player-icons": {
+      "chromium": "",
+      "default": "",
+      "firefox": "",
+      "kdeconnect": "",
+      "mopidy": "",
+      "mpv": "󰐹",
+      "spotify": "",
+      "vlc": "󰕼",
     },
+    "status-icons": {
+      "paused": "󰐎",
+      "playing": "",
+      "stopped": "",
+    },
+    // "ignored-players": ["firefox"]
+    "max-length": 30,
   },
   "tray": {
-    "icon-size": 21,
+    // "icon-size": 21,
     "spacing": 10
   },
-  "custom/launcher": {
-    "format": " ",
-    "on-click": "fuzzel --config ~/.config/fuzzel/launcher.ini || pkill fuzzel",
-    "on-click-right": "pkill fuzzel",
-    "tooltip": false,
-  },
-  "custom/music": {
-    "format": "  {}",
-    "escape": true,
-    "interval": 5,
-    "tooltip": false,
-    "exec": "playerctl metadata --format='{{ title }}'",
-    "on-click": "playerctl play-pause",
-    "max-length": 50
-  },
   "clock": {
-    "timezone": "America/Denver",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "  {:%d/%m/%Y}",
-    "format": "  {:%H:%M}"
+    "interval": 60,
+    "format": "  {:%H:%M} ",
+    "format-alt": " {:%Y-%m-%d}"
+  },
+  "niri/window": {
+    "max-length": 25, // Characters count
+    "separate-outputs": true,
+    "icon": true
+  },
+  "cpu": {
+    "format": "  {usage}% ",
+    "tooltip": false
+  },
+  "memory": {
+    "format": "  {avail} GB "
   },
   "backlight": {
-    "device": "amdgpu_bl1",
-    "format": "{icon} {percent}%",
-    "format-alt": "{icon}",
-    "tooltip": false,
+    // "device": "acpi_video1",
+    "format": "{icon} {percent}% ",
     "format-icons": [
       "",
       "",
@@ -66,64 +95,63 @@
     ]
   },
   "battery": {
-    "interval": 30,
     "states": {
-      "warning": 20,
-      "critical": 10
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
     },
-    "format": "{icon} {capacity}%",
-    "format-charging": "󰂄 {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-alt": "{icon}",
+    "format": "{icon} {capacity} ",
+    "format-charging": "  {capacity}",
+    "format-plugged": " {capacity}",
+    "format-alt": "{icon} {time} ",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
     "format-icons": [
       "󰂎",
-      "󰁺",
       "󰁻",
-      "󰁼",
       "󰁽",
-      "󰁾",
-      "󰁿",
-      "󰂀",
       "󰂁",
-      "󰂂",
       "󰁹"
     ]
   },
+  "battery#bat2": {
+    "bat": "BAT2"
+  },
+  "network": {
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "format-wifi": "  {signalStrength}",
+    "format-ethernet": "{ipaddr}/{cidr} ",
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "Disconnected ⚠",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+  },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
-    "format": "{icon} {volume}%",
-    "format-muted": " ",
+    "format": "{icon}  {volume} % ",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
     "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
       "default": [
         "",
         "",
         ""
       ]
     },
-    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "on-click-right": "pavucontrol",
+    "on-click": "pavucontrol"
   },
-  "custom/lock": {
+  "custom/barlogo": {
     "tooltip": false,
-    "on-click": "hyprlock &",
-    "format": " ",
+    //"format" : "<span font='16'>󰄛</span>",
+    "format": "󰄛",
   },
-  "custom/power": {
-    "tooltip": false,
-    "on-click": "wlogout &",
-    "format": "⏻ "
-  },
-  "niri/language": {
-    "format": "  {short}",
-  },
-  "network": {
-    "interface": "enp5s0",
-    "format": "{ifname}",
-    "format-disconnected": "",
-    "format-wifi": " ",
-    "format-alt": "  {essid}",
-    "tooltip-format": "{signalStrength}%",
-    "tooltip-format-wifi": "{essid} {signalStrength}%",
-    "tooltip-format-disconnected": "No Connection",
-  }
 }

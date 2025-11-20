@@ -152,10 +152,6 @@ local M = {
         on_attach = on_attach
       }
       vim.lsp.enable('zls')
-      lspconfig.cssls = {
-        on_attach = on_attach
-      }
-      vim.lsp.enable('cssls')
       lspconfig.tailwindcss = {
         on_attach = on_attach,
         filetypes = {
