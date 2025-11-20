@@ -1,14 +1,13 @@
 
 // spawn-sh-at-startup "uwsm app -- /usr/lib/polkit-kde-authentication-agent-1"
-spawn-sh-at-startup "uwsm app -- /usr/lib/xdg-desktop-portal-kde"
-spawn-sh-at-startup "uwsm app -- /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-spawn-sh-at-startup "uwsm app -- gnome-keyring-daemon --start --components=secrets"
+spawn-sh-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-sh-at-startup "gnome-keyring-daemon --start --components=secrets"
 spawn-at-startup "dunst"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-at-startup "swww-daemon"
-spawn-sh-at-startup "uwsm app -- udiskie --smart-tray"
-spawn-sh-at-startup "uwsm app -- nm-applet"
+spawn-sh-at-startup "udiskie --smart-tray"
+spawn-sh-at-startup "nm-applet"
 // spawn-at-startup "swayidle" "-w"
 
 
