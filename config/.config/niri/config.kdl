@@ -6,6 +6,7 @@ spawn-at-startup "dunst"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-at-startup "swww-daemon"
+spawn-at-startup "~/.scripts/forceFloating"
 spawn-sh-at-startup "udiskie --smart-tray"
 spawn-sh-at-startup "nm-applet"
 // spawn-at-startup "swayidle" "-w"
@@ -142,7 +143,7 @@ layout {
         width 3
         // active-color "transparent"
         // inactive-color "#505050"
-        active-color   "#9ecaff"
+        active-color   "#FFB3AF"
         inactive-color "#8b919c"
         urgent-color   "#ffb4ab"
     }
@@ -225,7 +226,7 @@ binds {
     Mod+F hotkey-overlay-title="Run an Application: zen" { spawn "zen-browser"; }
     Mod+E hotkey-overlay-title="Open File Manager: nautilus" { spawn "nautilus"; }
     Mod+Shift+B hotkey-overlay-title="Open/Close Waybar" {spawn-sh "~/.config/waybar/launch.sh";}
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    // Super+Ctrl+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Ctrl+Alt+Delete { spawn "rofi" "-show" "menu" "-modi" "'menu:~/.config/rofi/scripts/rofi-power-menu-niri --choices=logout/suspend/reboot/shutdown'" "-config" "~/.config/rofi/powers.rasi"; }
     Super+Space allow-when-locked=true hotkey-overlay-title="Spawn Rofi" { spawn "rofi" "-show" "drun" "-config" "/home/ellie/.config/rofi/config1.rasi"; }
     Super+Shift+P hotkey-overlay-title="Color Picker" { spawn "hyprpicker" "-an"; }
@@ -274,10 +275,10 @@ binds {
     Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
     Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Alt+H     { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
     Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+    Mod+Shift+Alt+L     { move-column-to-monitor-right; }
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
     Mod+U              { focus-workspace-down; }
@@ -353,12 +354,12 @@ binds {
     // Mod+R { switch-preset-column-width-back; }
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
-    Mod+Shift+Return { maximize-column; }
-    Mod+Return { fullscreen-window; }
+    // Mod+Shift+Return { maximize-column; }
+    Mod+Shift+Return { fullscreen-window; }
 
     // Expand the focused column to space not taken up by other fully visible columns.
     // Makes the column "fill the rest of the space".
-    Mod+Ctrl+F { expand-column-to-available-width; }
+    Mod+Return { expand-column-to-available-width; }
 
     Mod+C { center-column; }
 

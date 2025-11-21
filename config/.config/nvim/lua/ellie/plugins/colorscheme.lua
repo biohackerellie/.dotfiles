@@ -94,7 +94,7 @@ local M = {
       styles = {
         keywords = { bold = true },
         functions = { italic = true },
-        sidebars = "normal",
+        sidebars = "transparent",
       },
       cache = true,
       lualine_bold = false,

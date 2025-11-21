@@ -92,7 +92,7 @@ function M.bootstrap()
     change_detection = { notify = false },
     checker = { enabled = true },
     ui = {
-      backdrop = M.transparent and 100 or 60,
+      backdrop = M.transparent and 10 or 10,
       border = M.get_border(),
       icons = {
         loaded = "󰽢",
