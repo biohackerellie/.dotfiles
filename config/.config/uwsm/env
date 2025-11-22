@@ -12,6 +12,7 @@ export GSK_RENDERER=gl
 export GDK_DEBUG=gl-no-fractiona
 export GDK_SCALE=1
 export GDK_BACKEND=wayland,x11
+export XDG_SESSION_TYPE=wayland
 export INPUT_METHOD=fcitx
 export GLFW_IM_MODULE=ibus
 export ELECTRON_OZONE_PLATFORM_HINT=auto
