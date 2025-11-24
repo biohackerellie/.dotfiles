@@ -33,3 +33,9 @@ config/.config/gtk-3.0/colors.css
 config/.config/gtk-4.0/colors.css
 config/.config/rofi/colors.rasi
 config/.config/waybar/colors.css
+config/.config/ghostty/themes/Matugen
+config/.config/gtk-3.0/colors.css
+config/.config/gtk-4.0/colors.css
+config/.config/rofi/colors.rasi
+config/.config/waybar/colors.css
+config/.config/hypr/colors.conf

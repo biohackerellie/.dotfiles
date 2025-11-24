@@ -6,8 +6,8 @@
   "height": 8, // Waybar height (to be removed for auto height)
   "modules-left": [
     "custom/distrologo",
-    "niri/workspaces",
-    "niri/window",
+    "hyprland/workspaces",
+    "hyprland/window",
     "cpu",
     "memory",
     "temperature"
