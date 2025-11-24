@@ -39,3 +39,6 @@ config/.config/gtk-4.0/colors.css
 config/.config/rofi/colors.rasi
 config/.config/waybar/colors.css
 config/.config/hypr/colors.conf
+config/.config/vesktop/Crashpad
+config/.config/vesktop/sessionData
+config/.config/vesktop/state.json
