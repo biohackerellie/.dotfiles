@@ -1,0 +1,13 @@
+background-color=#00363c
+text-color=#b9c6ea
+border-color=#3a4664
+
+[mode=do-not-disturb]
+invisible=1
+on-notify=none
+
+[mode=silent]
+on-notify=none
+
+[urgency=high]
+border-color=#93000a

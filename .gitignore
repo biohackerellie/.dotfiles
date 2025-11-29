@@ -5,6 +5,7 @@
 **/packer_compiled.lua
 *.tmp
 *.temp
+colors.kdl
 .env
 *.bak
 *.old

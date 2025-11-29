@@ -7,15 +7,15 @@
 
 
 
-spawn-sh-at-startup "uwsm app -- /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
-spawn-sh-at-startup "uwsm app -- gnome-keyring-daemon --start --components=secrets"
-
-
-spawn-at-startup "dunst"
+spawn-sh-at-startup "gnome-keyring-daemon --start --components=secrets"
 
 
-spawn-at-startup "xwayland-satellite"
+spawn-at-startup "waybar"
+
+
+// spawn-at-startup "xwayland-satellite"
 
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 
@@ -38,16 +38,19 @@ gestures {
 }
 
 environment {
+  // DISPLAY ":11"
   GDK_SCALE  "1"
   XDG_CURRENT_DESKTOP "niri"
+  XDG_SESSION_TYPE "wayland"
   QT_AUTO_SCREEN_SCALE_FACTOR "1"
   QT_QPA_PLATFORM "wayland"
   QT_QPA_PLATFORMTHEME "qt6ct"
   ELECTRON_OZONE_PLATFORM_HINT "auto"
+  MOZ_ENABLE_WAYLAND "1"
   QT_QPA_PLATFORMTHEME_QT6 "qt6ct"
   QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
   SDL_VIDEODRIVER "wayland"
-  // GDK_BACKEND "wayland"
+  GDK_BACKEND "wayland"
   CLUTTER_BACKEND "wayland"
   WLR_NO_HARDWARE_CURSORS "1"
 
@@ -157,9 +160,23 @@ layout {
         width 3
         // active-color "transparent"
         // inactive-color "#505050"
-        active-color   "#FFB3AF"
-        inactive-color "#8b919c"
+        active-color   "#81d3df"
+        inactive-color "#899294"
         urgent-color   "#ffb4ab"
+    }
+
+    shadow {
+        color "#00000070"
+    }
+
+    tab-indicator {
+        active-color   "#81d3df"
+        inactive-color "#899294"
+        urgent-color   "#ffb4ab"
+    }
+
+    insert-hint {
+        color "#81d3df80"
     }
 
 }
@@ -216,6 +233,11 @@ window-rule {
   match app-id=r#"gcr-prompter$"#
   open-floating true
   open-focused true
+}
+
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
 }
 
 layer-rule{
@@ -373,7 +395,7 @@ binds {
 
     // Expand the focused column to space not taken up by other fully visible columns.
     // Makes the column "fill the rest of the space".
-    Mod+Return { expand-column-to-available-width; }
+    Mod+Return { maximize-column; }
 
     Mod+C { center-column; }
 
