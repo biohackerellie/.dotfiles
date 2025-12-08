@@ -43,3 +43,4 @@ config/.config/hypr/colors.conf
 config/.config/vesktop/Crashpad
 config/.config/vesktop/sessionData
 config/.config/vesktop/state.json
+config/.config/gtk-3.0/bookmarks
