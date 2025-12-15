@@ -20,10 +20,11 @@ gtk-wide-tabs = false
 gtk-titlebar-style = native
 window-show-tab-bar = never
 
+config-file = ./config-dankcolors
 custom-shader = ./shaders/cursor_tail.glsl
 
 
-theme = "Matugen"
+
 window-save-state = always
 
 shell-integration-features = no-cursor

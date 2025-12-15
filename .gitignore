@@ -44,3 +44,10 @@ config/.config/vesktop/Crashpad
 config/.config/vesktop/sessionData
 config/.config/vesktop/state.json
 config/.config/gtk-3.0/bookmarks
+config/.config/DankMaterialShell/firefox.css
+config/.config/ghostty/config-dankcolors
+config/.config/gtk-3.0/dank-colors.css
+config/.config/gtk-4.0/dank-colors.css
+config/.config/gtk-4.0/gtk.css
+config/.config/niri/dms/colors.kdl
+config/.config/qt5ct/colors/matugen.conf

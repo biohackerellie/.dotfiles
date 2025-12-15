@@ -7,27 +7,26 @@
 
 
 
-spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+// spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
-spawn-sh-at-startup "gnome-keyring-daemon --start --components=secrets"
-
-
-spawn-at-startup "waybar"
+// spawn-sh-at-startup "gnome-keyring-daemon --start --components=secrets"
 
 
-// spawn-at-startup "xwayland-satellite"
+//spawn-at-startup "waybar"
+
+
+spawn-at-startup "xwayland-satellite"
 
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 
 
-spawn-at-startup "swww-daemon"
-spawn-at-startup "~/.scripts/forceFloating"
-spawn-sh-at-startup "udiskie --smart-tray"
-spawn-sh-at-startup "nm-applet"
+//spawn-at-startup "swww-daemon"
+//spawn-at-startup "~/.scripts/forceFloating"
+//spawn-sh-at-startup "udiskie --smart-tray"
+//spawn-sh-at-startup "nm-applet"
 // spawn-at-startup "swayidle" "-w"
 
 
-// include "~/.config/niri/dms/binds.kdl"
 
 prefer-no-csd
 
@@ -154,11 +153,8 @@ layout {
     border {
         width 3
     }
-  shadow {}
 
 }
-
-include "./colors.kdl"
 
 
 hotkey-overlay {
@@ -217,6 +213,10 @@ window-rule {
     match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
     default-floating-position x=10 y=10 relative-to="bottom-right"
 }
+window-rule {
+    match app-id=r#"org.quickshell$"#
+    open-floating true
+}
 
 layer-rule{
   match namespace="waybar"
@@ -224,14 +224,14 @@ layer-rule{
   place-within-backdrop true
 }
 
-// layer-rule {
-//   match namespace="^quickshell$"
-//   place-within-backdrop true
-// }
-// layer-rule {
-//     match namespace="dms:blurwallpaper"
-//     place-within-backdrop true
-// }
+layer-rule {
+  match namespace="^quickshell$"
+  place-within-backdrop true
+}
+layer-rule {
+    match namespace="dms:blurwallpaper"
+    place-within-backdrop true
+}
 
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
@@ -242,7 +242,7 @@ binds {
     Mod+Shift+B hotkey-overlay-title="Open/Close Waybar" {spawn-sh "~/.config/waybar/launch.sh";}
     // Super+Ctrl+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Ctrl+Alt+Delete { spawn "rofi" "-show" "menu" "-modi" "'menu:~/.config/rofi/scripts/rofi-power-menu-niri --choices=logout/suspend/reboot/shutdown'" "-config" "~/.config/rofi/powers.rasi"; }
-    Super+Space allow-when-locked=true hotkey-overlay-title="Spawn Rofi" { spawn "rofi" "-show" "drun" "-config" "/home/ellie/.config/rofi/config1.rasi"; }
+    // Super+Space allow-when-locked=true hotkey-overlay-title="Spawn Rofi" { spawn "rofi" "-show" "drun" "-config" "/home/ellie/.config/rofi/config1.rasi"; }
     Super+Shift+P hotkey-overlay-title="Color Picker" { spawn "hyprpicker" "-an"; }
     Mod+Comma { spawn-sh "~/.scripts/bin/emojis";}
     
@@ -404,3 +404,9 @@ binds {
 
     // Mod+Shift+P { power-off-monitors; }
 }
+
+
+include "./dms/colors.kdl"
+include "./dms/layout.kdl"
+include "./dms/alttab.kdl"
+include "./dms/binds.kdl"
